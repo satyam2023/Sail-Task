@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: '#233972',
         gap: 10,
-        marginVertical: 10,
+        marginBottom:16,
         marginHorizontal: 20,
     },
     signbtn: {
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 100,
         gap: 10,
-        marginVertical: 10,
         marginHorizontal: 20,
     },
     txt: {
@@ -47,10 +46,11 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         fontStyle:'normal',
     },
-    img:{
+    imghand:{
         width: 247.551,
       height: 214.662,
      marginHorizontal:73,
+     marginBottom:123.34,
 
     },
     toptxt:{
@@ -66,6 +66,10 @@ const styles = StyleSheet.create({
         letterSpacing:0.24,
         fontStyle:'normal',
     },
+    imgsail:{
+     width:393,
+     height:192,
+    },
     lowertxt:{
         color:'rgba(17, 15, 36, 0.50)',
         textAlign:'center',
@@ -74,6 +78,9 @@ const styles = StyleSheet.create({
         lineHeight:24,
         letterSpacing:0.12,
         fontStyle:'normal',
+    },
+    toptxtcontainer:{
+        marginBottom:42,
     }
 });
 export default styles;
