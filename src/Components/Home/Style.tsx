@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
     },
     imgsail:{
      width:90,
-     height:90,
-     marginTop:52,
+     height:100,
+     marginTop:12,
      marginHorizontal:151,
      marginBottom:16,
     },
