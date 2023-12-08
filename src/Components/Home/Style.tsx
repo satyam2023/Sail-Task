@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
 
     },
     toptxt:{
+        marginTop:0,
         left:70,
         right:70,
         width:263,
@@ -67,8 +68,11 @@ const styles = StyleSheet.create({
         fontStyle:'normal',
     },
     imgsail:{
-     width:393,
-     height:192,
+     width:90,
+     height:90,
+     marginTop:52,
+     marginHorizontal:151,
+     marginBottom:16,
     },
     lowertxt:{
         color:'rgba(17, 15, 36, 0.50)',

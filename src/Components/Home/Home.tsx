@@ -20,7 +20,7 @@ const HomeScreen: React.FC<Homeprops> = () => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar backgroundColor="#FFF" />
-           <Image source={require('../images/Sail.png')}  style={styles.imgsail}/>
+           <Image source={require('../images/Sail.png')}  style={styles.imgsail}/> 
          <View style={styles.toptxtcontainer}>
          <Text style={styles.toptxt}>Track your sales meeting hassle free</Text>
          <Text style={styles.lowertxt}>Effortlessly organize and elevate your meetings</Text> 
