@@ -4,11 +4,12 @@ import CustomFooter from "../CustomFooter/CustomFooter";
 import CustomHeader from "../CustomHeader/CustomHeader";
 import { SafeAreaView } from "react-native-safe-area-context";
 import First from "../FirstSignUpPage/First";
+import Second from "../SecondSignUpPage/Second";
 const SignUpScreen: React.FC<{}> = () => {
     return (
         <SafeAreaView>
             <ScrollView >
-                <First />
+               <Second/>
             </ScrollView>
             <CustomFooter />
         </SafeAreaView>
