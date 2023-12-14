@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF',
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: '#233972',
         gap: 10,
-        marginBottom:16,
+        marginBottom: 16,
         marginHorizontal: 20,
     },
     signbtn: {
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         gap: 10,
         marginHorizontal: 20,
+        marginBottom: 47,
     },
     txt: {
         width: 'auto',
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "500",
         lineHeight: 20,
-        fontStyle:'normal',
+        fontStyle: 'normal',
     },
     txtofSign: {
         width: 'auto',
@@ -44,47 +46,49 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "500",
         lineHeight: 20,
-        fontStyle:'normal',
+        fontStyle: 'normal',
     },
-    imghand:{
-        width: 247.551,
-      height: 214.662,
-     marginHorizontal:73,
-     marginBottom:123.34,
+    imghand: {
+        alignSelf: 'center',
+        marginBottom: 124,
+        marginTop: 42,
 
     },
-    toptxt:{
-        marginTop:0,
-        left:70,
-        right:70,
-        width:263,
-        height:68,
-        color:'#00235B',
-        textAlign:'center',
-        fontSize:24,
-        fontWeight:"600",
-        lineHeight:34,
-        letterSpacing:0.24,
-        fontStyle:'normal',
+    toptxt: {
+        color: '#00235B',
+        width: 265,
+        textAlign: 'center',
+        fontSize: 24,
+        fontWeight: "600",
+        lineHeight: 34,
+        letterSpacing: 0.24,
+        alignSelf: 'center'
     },
-    imgsail:{
-     width:90,
-     height:100,
-     marginTop:12,
-     marginHorizontal:151,
-     marginBottom:16,
+    imgsail: {
+        width: 90,
+        height: 90,
+        marginTop: 14,
+        alignSelf: 'center',
+        resizeMode: 'contain'
     },
-    lowertxt:{
-        color:'rgba(17, 15, 36, 0.50)',
-        textAlign:'center',
-        fontSize:12,
-        fontWeight:'400',
-        lineHeight:24,
-        letterSpacing:0.12,
-        fontStyle:'normal',
+    lowertxt: {
+        color: '#110F2480',
+        textAlign: 'center',
+        fontSize: 12,
+        fontWeight: '400',
+        lineHeight: 24,
+        letterSpacing: 0.12,
+        fontStyle: 'normal',
+        marginTop: 4,
     },
-    toptxtcontainer:{
-        marginBottom:42,
-    }
+    toptxtcontainer: {
+       // marginBottom: 42,
+        marginTop: 30,
+    },
+    logocontainer: {
+        marginTop: 64,
+    },
+
 });
+
 export default styles;

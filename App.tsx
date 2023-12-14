@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import HomeScreen from './src/Components/Home/Home';
 import {
   SafeAreaView,
@@ -17,6 +17,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Routing from './src/Views/Screens/Route';
+import SignUpScreen from './src/Components/SignUp/SignUpScreen';
 
 import {
   Colors,
@@ -25,6 +27,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Routes from './src/Views/Screens/Route';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -32,13 +35,13 @@ type SectionProps = PropsWithChildren<{
 
 
 function App(): React.JSX.Element {
-  
+
 
   return (
-    <SafeAreaView >
-      <HomeScreen/>
-    
-    </SafeAreaView>
+    <>
+      <Routes />
+    </>
+   
   );
 }
 
