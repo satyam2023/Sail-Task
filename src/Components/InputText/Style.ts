@@ -12,6 +12,16 @@ TextInputs: {
     nothing:{
 
     },
+    TextInputsfloat: {
+        fontSize:14,
+        fontWeight:'400',
+        lineHeight:17.5,
+        color:'#110F24',
+        textAlign: 'left',
+        marginTop:10,
+        marginLeft:56,
+                },
+
     moveup:{
         position:"absolute",
         right:70,

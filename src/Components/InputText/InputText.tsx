@@ -8,11 +8,14 @@ interface InputProps {
     keyboardType: any,
     secureText: boolean,
     maxLength: number,
+
 }
 
 const InputText: FC<InputProps> = (props): JSX.Element => {
     const [keyboard,setkeyboard]=useState<boolean>(true)
     const [float,setfloat]=useState<boolean>(false)
+    
+    
     Keyboard.addListener('keyboardDidHide', () => {
         setkeyboard(false);
     })
@@ -23,15 +26,16 @@ const InputText: FC<InputProps> = (props): JSX.Element => {
     function handleone() {
         setfloat(false);
     }
+    
     return (
         <>
-        { float?
-            <View>
-                <Text style={{color:'rgba(13, 165, 248, 1)',position:'absolute',bottom:29,left:20,backgroundColor:'transparent'}}>
+        { float==true &&
+            <View style={{marginBottom:10,}}>
+                <Text style={{color:'#00000080',position:'absolute',top:9,left:56,fontWeight:'400',fontSize:12,lineHeight:15,
+        }}>
                     {props.placeholder}</Text>
             </View>
-            :
-            <></>
+            
         }
         <TextInput
             
@@ -39,12 +43,13 @@ const InputText: FC<InputProps> = (props): JSX.Element => {
             placeholderTextColor={'#110F2480'}
             onFocus={handle}
             onBlur={handleone}
-            
             onChangeText={
                 (text: string) => {
-                    props.ChangeText(text)
+                    props.ChangeText(text);
+                   
                 }
             }
+        
             style={styles.TextInputs}
             keyboardType={props.keyboardType}
             secureTextEntry={props.secureText}

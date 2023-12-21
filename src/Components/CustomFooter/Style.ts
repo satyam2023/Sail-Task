@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 const styles=StyleSheet.create({
     footer:{
       position: 'absolute',
+      top:673,
       left: 0,
       right: 0,
       bottom: 0,
@@ -11,8 +12,8 @@ const styles=StyleSheet.create({
      
     },
 footercontainer:{
-    position:'absolute',
-    top:470,
+  //  position:'absolute',
+   // top:470,
     width:410,
     height:148,
     backgroundColor:'#FFFFFF',
@@ -43,18 +44,23 @@ circle:{
 
 },
 progressbar:{
-    position:'absolute',
-    top:463,
+   // position:'absolute',
+    //top:463,
+    flexDirection:'row',
     width:393,
     height:6,
     backgroundColor:'#F9F9FC',
 },
 bar:{
-    position:'absolute',
-    top:463,
+   // position:'absolute',
+    //top:463,
     backgroundColor:'#E67437',
-    width:120,
+    width:160,
+},
+nobar:{
+  backgroundColor:'#F9F9FC',
+},
 }
 
-});
+);
 export default styles;
