@@ -17,6 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Splash from './src/Components/SplashScreen/Splash';
 import Routing from './src/Views/Screens/Route';
 import SignUpScreen from './src/Components/SignUp/SignUpScreen';
 
@@ -39,7 +40,7 @@ function App(): React.JSX.Element {
 
   return (
     <>
-      <Routes />
+    <Routes/>
     </>
    
   );

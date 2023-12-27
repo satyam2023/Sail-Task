@@ -4,9 +4,10 @@ import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-na
 import InputText from "../InputText/InputText";
 import CustomHeader from "../CustomHeader/CustomHeader";
 interface SecondProps{
+    setScreen:Function,
 
 }
-const Second = forwardRef(({}: SecondProps, ref) => {
+const Second = forwardRef(({setScreen}: SecondProps, ref) => {
     const [toggle,settoggle]=useState<boolean>(false);
     const [roletoggle,settogglerole]=useState<boolean>(false);
     const [Tag,setTag]=useState<String>("Location")
@@ -15,6 +16,10 @@ const Second = forwardRef(({}: SecondProps, ref) => {
     const [dropstatusrole, setdropstatusrole] = useState<boolean>(false);
     const [name,setname]=useState<boolean>(true);
     const [email,setemail]=useState<boolean>(true);
+    const [validname ,setvalidname]=useState<boolean>(false);
+    const [validemail,setvalidemail]=useState<boolean>(false);
+    const [validlocation,setvalidlocation]=useState<boolean>(true);
+    const [validrole,setvalidrole]=useState<boolean>(true);
     const details = {
         name: useRef(''),
         email: useRef(''),
@@ -142,6 +147,7 @@ const Second = forwardRef(({}: SecondProps, ref) => {
           setname(false);
         } else {
           setname(true);
+          setvalidname(true);
         }
       }
 
@@ -152,13 +158,44 @@ const Second = forwardRef(({}: SecondProps, ref) => {
           setemail(false);
         } else {
             setemail(true);
+            setvalidemail(true);
+        }
+      }
+
+      function locationhandler(){
+        if(Tag!="Location"){
+            setvalidlocation(true);
+        }
+      }
+      function rolehandler(){
+        if(TagRole!="Your Role"){
+            setvalidrole(true);
         }
       }
 
 
+
+
       function validationcheck(){
-        console.log("FUnction in Second component called sucessfully")
-    }
+        if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
+              setScreen(3);
+        }
+        else{
+            if(!validname)
+            setname(false);
+
+            if(!validemail)
+            setemail(false);
+
+            if(Tag=="Location")
+            setvalidlocation(false);
+
+
+            if(TagRole=="Your Role")
+             setvalidrole(false);
+
+        }
+      }
 
     useImperativeHandle(ref, () => ({
         handleSubmit: validationcheck,
@@ -166,7 +203,7 @@ const Second = forwardRef(({}: SecondProps, ref) => {
 
 
   return(
-    <ScrollView style={{backgroundColor:'#FFF'}}>
+    <ScrollView style={{height:700,backgroundColor:'#FFF'}}>
         <CustomHeader details="Enter your personal information"/>
     <View style={name?styles.inputbox:styles.inputboxno} >
     <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={styles.img}/></View>
@@ -195,9 +232,11 @@ const Second = forwardRef(({}: SecondProps, ref) => {
     />
 </View>
 
-                    <TouchableOpacity style={styles.searchbox} onPress={() => {
+                    <TouchableOpacity style={validlocation?styles.searchbox:styles.nosearchbox} onPress={() => {
                         if (toggle) { settoggle(false) }
-                        else { settoggle(true) }
+                        else { settoggle(true) 
+                        setvalidlocation(true)}
+
                     }} >
                          <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/Location.png')} style={styles.img}/></View>
 
@@ -209,9 +248,10 @@ const Second = forwardRef(({}: SecondProps, ref) => {
 
                 
                 
-                    <TouchableOpacity style={styles.searchbox} onPress={() => {
+                    <TouchableOpacity style={validrole?styles.searchbox:styles.nosearchbox} onPress={() => {
                         if (roletoggle) { settogglerole(false) }
-                        else { settogglerole(true) }
+                        else { settogglerole(true) 
+                        setvalidrole(true)}
                     }} >
                          <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/Role.png')} style={styles.img}/></View>
 

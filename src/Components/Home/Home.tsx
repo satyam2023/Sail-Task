@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React, { useState } from 'react';
 import {
     Text,
     View,
@@ -7,12 +7,20 @@ import {
     StatusBar} from 'react-native';
 //import { RootStackParamList } from '../../Views/Screens/Route';
 import styles from './Style';
+import Splash from '../SplashScreen/Splash';
 
 // type HomeProps = NativeStackScreenProps<RootStackParamList,'Home','SignUp'>;
 
 const HomeScreen = (props:any) => {
-    console.log('here are props:::::::', props)
+    const [splashscreen ,setsplashscreen]=useState(true);
+    setTimeout(controlsplash, 2000);
+    function controlsplash(){
+        setsplashscreen(false);
+    }
+    
     return (
+       
+         !splashscreen?
         <View style={styles.container}>
         <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
         
@@ -32,7 +40,13 @@ const HomeScreen = (props:any) => {
                 <Text style={styles.txtofSign}>Sign In</Text>
             </TouchableOpacity >
             
-        </View>
+        </View>:
+        <Splash/>
+
+   
+
+
+        
 
     );
 }

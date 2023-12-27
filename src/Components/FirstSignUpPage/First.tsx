@@ -22,13 +22,18 @@ import styles from './Styles';
 
 //import DropdownList from './DropDownList';
 interface FirstProps {
+    CurrentScreen:any,
+    setScreen:any,
+   totalvalidation:any,
 
 }
 
-const First = forwardRef(({ }: FirstProps, ref) => {
-
+const First = forwardRef(({totalvalidation,setScreen}: FirstProps, ref) => {
+   //var totalvalidation=false;
     const [personalnumber, setpersonalnumber] = useState(true);
     const [contactnumber, setcontactnumber] = useState(true);
+    const [validpersonal,setvalidpersonal] =useState(false);
+    const [validcontact,setvalidcontact]=useState(false);
 
     const details = {
         contactnumber: useRef(''),
@@ -40,7 +45,7 @@ const First = forwardRef(({ }: FirstProps, ref) => {
     }
 
     function handlepersonalnumber(txt: any) {
-        let personalnumberlength = txt.length;
+        var personalnumberlength = txt.length;
         if (!containsNumber(txt)) {
             setpersonalnumber(false);
         }
@@ -49,8 +54,10 @@ const First = forwardRef(({ }: FirstProps, ref) => {
         }
         else {
             setpersonalnumber(true);
+            setvalidpersonal(true)
         }
     }
+   
     function handlconatctnumber(txt: any) {
         let contactnumberlength = txt.length;
 
@@ -62,12 +69,30 @@ const First = forwardRef(({ }: FirstProps, ref) => {
         }
         else {
             setcontactnumber(true);
+            setvalidcontact(true);
         }
 
 
     }
+    if(validpersonal && validcontact){
+        totalvalidation(true);
+       }
+   
     function validationcheck(){
-        console.log("FUnction in first component called sucessfully")
+        
+       if(validpersonal && validcontact){
+        setScreen(2)
+       }
+       else if(validpersonal && !validcontact){
+          setcontactnumber(false);
+       }
+       else if(!validpersonal && validcontact){
+        setpersonalnumber(false);
+       }
+       else{
+        setcontactnumber(false);
+        setpersonalnumber(false);
+       }
     }
 
     useImperativeHandle(ref, () => ({
@@ -75,7 +100,7 @@ const First = forwardRef(({ }: FirstProps, ref) => {
     }));
 
     return (
-        <ScrollView style={{ backgroundColor: '#FFFFFF' }}>
+        <View style={{ height:700,backgroundColor: '#FFFFFF' }}>
             <CustomHeader details="Enter your personal information" />
             <View style={personalnumber ? styles.inputbox : styles.inputboxno} >
                 <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={styles.img} /></View>
@@ -106,7 +131,7 @@ const First = forwardRef(({ }: FirstProps, ref) => {
                 />
 
             </View>
-        </ScrollView>
+        </View>
     );
 });
 

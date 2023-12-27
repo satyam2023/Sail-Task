@@ -67,7 +67,17 @@ searchbox:{
     backgroundColor:'#F5F7F9',
     marginBottom:16,
   },
-    
+  nosearchbox:{
+    flexDirection: 'row',
+    height:56,
+    width:353,
+    borderRadius: 33,
+    marginLeft:20,
+    backgroundColor:'#F5F7F9',
+    marginBottom:16,
+    borderWidth:1,
+    borderColor:'red',
+  }   
 });
 export default styles;
 

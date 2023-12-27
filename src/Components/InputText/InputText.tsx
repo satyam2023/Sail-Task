@@ -50,7 +50,7 @@ const InputText: FC<InputProps> = (props): JSX.Element => {
                 }
             }
         
-            style={styles.TextInputs}
+            style={!float?styles.TextInputs:styles.TextInputsfloating}
             keyboardType={props.keyboardType}
             secureTextEntry={props.secureText}
             maxLength={props.maxLength}

@@ -8,6 +8,7 @@ import Second from "../SecondSignUpPage/Second";
 import Third from "../ThirdSignUpPage/Third";
 const SignUpScreen: React.FC<{}> = () => {
     const [CurrentScreen,setCurrentScreen]=useState(1);
+    const [firstscreenvalid,setfirstscreenvalid]=useState(false)
     function setScreen(num:number){
         setCurrentScreen(num);
 
@@ -36,16 +37,20 @@ const SignUpScreen: React.FC<{}> = () => {
             ThirdScreenRef.current.handleSubmit();
         }
     }
+
+    function totalvalidation(booly:any){
+      setfirstscreenvalid(booly);
+    }
    
 
     return (
         <SafeAreaView>
             <ScrollView >
-           {CurrentScreen==1 && <First ref={FirstScreenRef}/>}
-           {CurrentScreen==2 && <Second ref={SecondScreenRef}/>}
-           {CurrentScreen==3 && <Third   ref={ThirdScreenRef}/>}
+           {CurrentScreen==1 && <First totalvalidation={totalvalidation} setScreen={setScreen} CurrentScreen={CurrentScreen} ref={FirstScreenRef}/>}
+           {CurrentScreen==2 && <Second setScreen={setScreen} ref={SecondScreenRef}/>}
+           {CurrentScreen==3 && <Third  setScreen={setScreen} ref={ThirdScreenRef}/>}
             </ScrollView>
-            <CustomFooter setScreen={setScreen} CurrentScreen={CurrentScreen} FirstSubmit={FirstSubmit} SecondSubmit={SecondSubmit} ThirdSubmit={ThirdSubmit}/>
+            <CustomFooter totalvalidation={firstscreenvalid} setScreen={setScreen} CurrentScreen={CurrentScreen} FirstSubmit={FirstSubmit} SecondSubmit={SecondSubmit} ThirdSubmit={ThirdSubmit}/>
         </SafeAreaView>
     );
 }

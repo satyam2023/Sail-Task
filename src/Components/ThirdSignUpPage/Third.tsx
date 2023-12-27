@@ -22,14 +22,16 @@ import styles from './Style';
 
 //import DropdownList from './DropDownList';
 interface ThirdProps {
+    setScreen:Function,
     
 }
 
-const Third = forwardRef(({ }: ThirdProps, ref) => {
+const Third = forwardRef(({setScreen }: ThirdProps, ref) => {
     const[passeye,setpasseye]=useState<boolean>(true);
     const[consfirmpasseye,setconfirmpasseye]=useState<boolean>(true);
     const[passstatus,setpassstatus]=useState(true);
     const[confirmpassstatus,setconfirmpassstatus]=useState(true);
+    const [validatepassword,setvalidatepassword]=useState(false);
     const details = {
         passOne: useRef(''),
         passTwo: useRef(''),
@@ -53,11 +55,20 @@ const Third = forwardRef(({ }: ThirdProps, ref) => {
         }
         else{
             setconfirmpassstatus(true);
+            setvalidatepassword(true);
+            setpassstatus(true);
         }
       }
 
       function validationcheck(){
-        console.log("FUnction in Third component called sucessfully")
+        console.log("Confirm password Statuis:::",confirmpassstatus)
+       if(validatepassword){
+        setScreen(1)
+       }
+       else{
+        setpassstatus(false);
+        setconfirmpassstatus(false);
+       }
     }
 
     useImperativeHandle(ref, () => ({
@@ -67,7 +78,7 @@ const Third = forwardRef(({ }: ThirdProps, ref) => {
     
 
     return (
-        <ScrollView style={{backgroundColor:'#FFFFFF'}}>
+        <ScrollView style={{height:700,backgroundColor:'#FFFFFF'}}>
             <CustomHeader details="Choose a passowrd"/>
             <View style={passstatus?styles.inputbox:styles.inputboxno} >
                 <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/key.png')} style={styles.img}/></View>
