@@ -3,6 +3,8 @@ import styles from "./Style";
 import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import InputText from "../InputText/InputText";
 import CustomHeader from "../CustomHeader/CustomHeader";
+import { useDispatch } from 'react-redux';
+import { setSecondscreen } from '../../Redux/Slice2';
 interface SecondProps{
     setScreen:Function,
 
@@ -20,6 +22,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
     const [validemail,setvalidemail]=useState<boolean>(false);
     const [validlocation,setvalidlocation]=useState<boolean>(true);
     const [validrole,setvalidrole]=useState<boolean>(true);
+    const dispatch = useDispatch();
     const details = {
         name: useRef(''),
         email: useRef(''),
@@ -173,6 +176,12 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
         }
       }
 
+      if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
+        dispatch(setSecondscreen(true));
+  }
+  else if (Tag=="Location" || TagRole=="Your Role" || !validemail || !validname){
+    dispatch(setSecondscreen(false));
+  }
 
 
 

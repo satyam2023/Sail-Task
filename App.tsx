@@ -28,7 +28,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import SignIn from './src/Components/SignIn/SignIn';
 import Routes from './src/Views/Screens/Route';
+import { Provider } from 'react-redux';
+import store from './src/Redux/Store';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -39,9 +42,9 @@ function App(): React.JSX.Element {
 
 
   return (
-    <>
-    <Routes/>
-    </>
+    <Provider store={store}>
+   <Routes/>
+    </Provider>
    
   );
 }

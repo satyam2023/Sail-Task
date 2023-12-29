@@ -52,10 +52,20 @@ signupthree:{
     width:277,
     height:56,
     borderRadius:100,
-    backgroundColor:'#233972',
+   
+},
+signupbackblue:{
+  backgroundColor:'#233972',
+ 
+},
+signupbacknoblue:{
+  backgroundColor:'#F5F7F9',
+},
+txet:{
+color:'#FFFFFF',
 },
 txte:{
-color:'#FFFFFF',
+color:'#110F2480'
 },
 
 circle:{
@@ -66,6 +76,16 @@ circle:{
     marginLeft:20,
     marginTop:16,
    
+
+},
+bluecircle:{
+  height:56,
+  width:56,
+  backgroundColor:'#233972',
+  borderRadius:100,
+  marginLeft:20,
+  marginTop:16,
+ 
 
 },
 circleleft:{

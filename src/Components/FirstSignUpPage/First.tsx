@@ -19,22 +19,24 @@ import {
 } from 'react-native';
 import InputText from '../InputText/InputText';
 import styles from './Styles';
+import { useDispatch } from 'react-redux';
+import { setfirstscreen } from '../../Redux/Slice2';
 
 //import DropdownList from './DropDownList';
 interface FirstProps {
-    CurrentScreen:any,
-    setScreen:any,
-   totalvalidation:any,
+    CurrentScreen: any,
+    setScreen: any,
+    totalvalidation: any,
 
 }
 
-const First = forwardRef(({totalvalidation,setScreen}: FirstProps, ref) => {
-   //var totalvalidation=false;
+const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
+    //var totalvalidation=false;
     const [personalnumber, setpersonalnumber] = useState(true);
     const [contactnumber, setcontactnumber] = useState(true);
-    const [validpersonal,setvalidpersonal] =useState(false);
-    const [validcontact,setvalidcontact]=useState(false);
-
+    const [validpersonal, setvalidpersonal] = useState(false);
+    const [validcontact, setvalidcontact] = useState(false);
+    const dispatch = useDispatch();
     const details = {
         contactnumber: useRef(''),
         phoneNumber: useRef(''),
@@ -48,51 +50,63 @@ const First = forwardRef(({totalvalidation,setScreen}: FirstProps, ref) => {
         var personalnumberlength = txt.length;
         if (!containsNumber(txt)) {
             setpersonalnumber(false);
+
         }
         else if (personalnumberlength < 10) {
             setpersonalnumber(false);
+
         }
         else {
             setpersonalnumber(true);
-            setvalidpersonal(true)
+            setvalidpersonal(true);
+
         }
     }
-   
+
     function handlconatctnumber(txt: any) {
         let contactnumberlength = txt.length;
 
         if (!containsNumber(txt)) {
             setcontactnumber(false);
+
         }
         else if (contactnumberlength < 10) {
             setcontactnumber(false);
+
         }
         else {
             setcontactnumber(true);
             setvalidcontact(true);
+
         }
 
 
     }
-    if(validpersonal && validcontact){
+    if (validpersonal && validcontact) {
+        console.log("here enter it::")
         totalvalidation(true);
-       }
-   
-    function validationcheck(){
-        
-       if(validpersonal && validcontact){
-        setScreen(2)
-       }
-       else if(validpersonal && !validcontact){
-          setcontactnumber(false);
-       }
-       else if(!validpersonal && validcontact){
-        setpersonalnumber(false);
-       }
-       else{
-        setcontactnumber(false);
-        setpersonalnumber(false);
-       }
+        dispatch(setfirstscreen(true)
+        )
+    }
+    else if (validpersonal! || validcontact!) {
+        dispatch(setfirstscreen(false))
+    }
+
+    function validationcheck() {
+
+        if (validpersonal && validcontact) {
+            setScreen(2)
+        }
+        else if (validpersonal && !validcontact) {
+            setcontactnumber(false);
+        }
+        else if (!validpersonal && validcontact) {
+            setpersonalnumber(false);
+        }
+        else {
+            setcontactnumber(false);
+            setpersonalnumber(false);
+        }
     }
 
     useImperativeHandle(ref, () => ({
@@ -100,7 +114,7 @@ const First = forwardRef(({totalvalidation,setScreen}: FirstProps, ref) => {
     }));
 
     return (
-        <View style={{ height:700,backgroundColor: '#FFFFFF' }}>
+        <View style={{ height: 700, backgroundColor: '#FFFFFF' }}>
             <CustomHeader details="Enter your personal information" />
             <View style={personalnumber ? styles.inputbox : styles.inputboxno} >
                 <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={styles.img} /></View>

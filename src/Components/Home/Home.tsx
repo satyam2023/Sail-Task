@@ -36,7 +36,7 @@ const HomeScreen = (props:any) => {
             <TouchableOpacity style={styles.btn} onPress={() => {props.navigation.navigate('SignUp')}}  >
                 <Text style={styles.txt}>Create Account</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.signbtn}>
+            <TouchableOpacity style={styles.signbtn} onPress={() => {props.navigation.navigate('SignIn')}}>
                 <Text style={styles.txtofSign}>Sign In</Text>
             </TouchableOpacity >
             

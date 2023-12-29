@@ -5,6 +5,8 @@ import React, {
     useState,
 } from 'react';
 import CustomHeader from '../CustomHeader/CustomHeader';
+import { useDispatch } from 'react-redux';
+import { setThirdscreen } from '../../Redux/Slice2';
 
 
 import {
@@ -23,15 +25,17 @@ import styles from './Style';
 //import DropdownList from './DropDownList';
 interface ThirdProps {
     setScreen:Function,
+    props:any,
     
 }
 
-const Third = forwardRef(({setScreen }: ThirdProps, ref) => {
+const Third = forwardRef(({setScreen,props }: ThirdProps, ref) => {
     const[passeye,setpasseye]=useState<boolean>(true);
     const[consfirmpasseye,setconfirmpasseye]=useState<boolean>(true);
     const[passstatus,setpassstatus]=useState(true);
     const[confirmpassstatus,setconfirmpassstatus]=useState(true);
     const [validatepassword,setvalidatepassword]=useState(false);
+    const dispatch=useDispatch();
     const details = {
         passOne: useRef(''),
         passTwo: useRef(''),
@@ -57,13 +61,21 @@ const Third = forwardRef(({setScreen }: ThirdProps, ref) => {
             setconfirmpassstatus(true);
             setvalidatepassword(true);
             setpassstatus(true);
+        
         }
+      }
+
+      if(validatepassword){
+        dispatch(setThirdscreen(true))
+      }
+      else if(!validatepassword){
+        dispatch(setThirdscreen(false))
       }
 
       function validationcheck(){
         console.log("Confirm password Statuis:::",confirmpassstatus)
        if(validatepassword){
-        setScreen(1)
+        props.navigation.navigate('SignIn')
        }
        else{
         setpassstatus(false);

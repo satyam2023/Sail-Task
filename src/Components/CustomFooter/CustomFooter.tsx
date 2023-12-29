@@ -9,10 +9,16 @@ interface Footerprops{
     SecondSubmit:Function,
     ThirdSubmit:Function,
     totalvalidation:boolean,
+    props:any,
 }
+import { useSelector } from "react-redux";
 
-const CustomFooter: React.FC<Footerprops> =({CurrentScreen,setScreen,FirstSubmit,SecondSubmit,totalvalidation,ThirdSubmit}:Footerprops)=>{
- console.log("total::::",totalvalidation)
+
+const CustomFooter: React.FC<Footerprops> =({CurrentScreen,setScreen,FirstSubmit,SecondSubmit,totalvalidation,ThirdSubmit,props}:Footerprops)=>{
+ const firstscreenstatus=useSelector((state:any)=>state.button.FirstScreenButtonStatus);
+ const secondscreenstatus=useSelector((state:any)=>state.button.SecondScreenButtonStatus);
+ const thirdscreenstatus=useSelector((state:any)=>state.button.ThirdScreenButtonStatus)
+console.log("secondbuttonstatus",secondscreenstatus);
 function handlenextscreen(){
     FirstSubmit();
     SecondSubmit();
@@ -55,20 +61,25 @@ function completesignup(){
                     {CurrentScreen!=3?
                     <TouchableOpacity style={CurrentScreen!=2?styles.signupbtn:styles.signupboth} >
                          <Text style={styles.signuptxt}>Sign Up</Text>
-                    </TouchableOpacity>:<TouchableOpacity style={CurrentScreen!=2?styles.signupthree:styles.signupboth}  onPress={completesignup}>
-                         <Text style={[styles.signuptxt,styles.txte]}>Sign Up</Text>
+                    </TouchableOpacity>:<TouchableOpacity style={CurrentScreen!=2?[styles.signupthree,thirdscreenstatus?styles.signupbackblue:styles.signupbacknoblue]:styles.signupboth}  onPress={completesignup}>
+                         <Text style={[styles.signuptxt,!thirdscreenstatus?styles.txte:styles.txet]}>Sign Up</Text>
                     </TouchableOpacity>}
-                    { CurrentScreen<=2 && <TouchableOpacity style={styles.circle}
+                    { CurrentScreen==1 && <TouchableOpacity style={!firstscreenstatus?styles.circle:styles.bluecircle}
                     onPress={handlenextscreen}>
-                       <Image style={{width:24,height:24,marginTop:15,marginLeft:15,gap:10}} source={require('../images/Arrow.png')}/>
+                      { !firstscreenstatus?<Image style={{width:24,height:24,marginTop:15,marginLeft:15,gap:10,}} source={require('../images/Arrow.png')}/>:<Image style={{width:24,height:24,marginTop:15,marginLeft:15,gap:10,}} source={require('../images/bluebutton.png')}/>}
+                    </TouchableOpacity>}
+                    { CurrentScreen==2 && <TouchableOpacity style={!secondscreenstatus?styles.circle:styles.bluecircle}
+                    onPress={handlenextscreen}>
+                      { !secondscreenstatus?<Image style={{width:24,height:24,marginTop:15,marginLeft:15,gap:10,}} source={require('../images/Arrow.png')}/>:<Image style={{width:24,height:24,marginTop:15,marginLeft:15,gap:10,}} source={require('../images/bluebutton.png')}/>}
                     </TouchableOpacity>}
                  </View>
-                 <View style={{height:18,width:236,marginTop:8,marginLeft:79,}}>
+                 <View style={{height:18,width:236,marginTop:8,marginLeft:79,flexDirection:'row'}}>
                  <Text style={{fontWeight:'400',fontSize:14,
-                lineHeight:17.5,color:'#110F2480'}}>Already have an account?
-                    <Text style={{fontWeight:'600',fontSize:14,
-                lineHeight:17.5,color:'#233972'}}> Sign in</Text>
-                 </Text>
+                lineHeight:17.5,color:'#110F2480'}}>Already have an account?</Text>
+                   
+                   <TouchableOpacity onPress={() => {props.navigation.navigate('SignIn')}}><Text style={{fontWeight:'600',fontSize:14,
+                lineHeight:17.5,color:'#233972'}}> Sign in</Text></TouchableOpacity> 
+                 
                  </View>
             </View>
 
