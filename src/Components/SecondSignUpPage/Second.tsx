@@ -1,9 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import styles from "./Style";
 import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import InputText from "../InputText/InputText";
 import CustomHeader from "../CustomHeader/CustomHeader";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSecondscreen } from '../../Redux/Slice2';
 interface SecondProps{
     setScreen:Function,
@@ -23,6 +23,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
     const [validlocation,setvalidlocation]=useState<boolean>(true);
     const [validrole,setvalidrole]=useState<boolean>(true);
     const dispatch = useDispatch();
+    var iconstatus=useSelector((state:any)=>state.button.SecondScreenButtonStatus);
     const details = {
         name: useRef(''),
         email: useRef(''),
@@ -176,13 +177,25 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
         }
       }
 
-      if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
+   /*   if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
+        dispatch(setSecondscreen(true));
+  }
+  else if (Tag=="Location" || TagRole=="Your Role" || !validemail || !validname){
+    dispatch(setSecondscreen(false));
+  }*/
+useEffect(
+()=>{
+    if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
         dispatch(setSecondscreen(true));
   }
   else if (Tag=="Location" || TagRole=="Your Role" || !validemail || !validname){
     dispatch(setSecondscreen(false));
   }
 
+},
+[validemail,validname,Tag!="Location",TagRole!="Your Role"]
+
+);
 
 
       function validationcheck(){
@@ -215,7 +228,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
     <ScrollView style={{height:700,backgroundColor:'#FFF'}}>
         <CustomHeader details="Enter your personal information"/>
     <View style={name?styles.inputbox:styles.inputboxno} >
-    <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={styles.img}/></View>
+    <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={!iconstatus?styles.img:styles.imgverified}/></View>
     <InputText
         placeholder="Your Name"
         ChangeText={(text: string) => {
@@ -228,7 +241,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
     />
 </View>
 <View style={email?styles.inputbox:styles.inputboxno} >
-    <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/email.png')} style={styles.img}/></View>
+    <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/email.png')} style={!iconstatus?styles.img:styles.imgverified}/></View>
     <InputText
         placeholder="Your Email Id"
         ChangeText={(text: string) => {
@@ -247,9 +260,9 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
                         setvalidlocation(true)}
 
                     }} >
-                         <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/Location.png')} style={styles.img}/></View>
+                         <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/Location.png')} style={!iconstatus?styles.img:styles.imgverified}/></View>
 
-                        <Text style={{ paddingLeft:56, paddingVertical: 19,fontWeight:'400',fontSize: 14, lineHeight:17.5}} >{Tag}
+                        <Text style={[styles.dropdown,Tag!="Location"?styles.dropdownnew:styles.dropdown]} >{Tag}
                         </Text>
                         <View style={{ backgroundColor: '#E6E6E6', width: 0,position:'absolute',left:313,}}><Image source={require('../images/Downward.png')} style={styles.imgdrop}/></View>
                     </TouchableOpacity>
@@ -262,9 +275,9 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
                         else { settogglerole(true) 
                         setvalidrole(true)}
                     }} >
-                         <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/Role.png')} style={styles.img}/></View>
+                         <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/Role.png')} style={!iconstatus?styles.img:styles.imgverified}/></View>
 
-                        <Text style={{ paddingLeft:56, paddingVertical: 19,fontWeight:'400',fontSize: 14, lineHeight:17.5}} >{TagRole}
+                        <Text style={[styles.dropdown,TagRole!="Your Role"?styles.dropdownnew:styles.dropdown]} >{TagRole}
                         </Text>
                         <View style={{ backgroundColor: '#E6E6E6', width: 0,position:'absolute',left:313,}}><Image source={require('../images/Downward.png')} style={styles.imgdrop}/></View>
                     </TouchableOpacity>

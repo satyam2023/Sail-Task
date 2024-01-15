@@ -1,0 +1,27 @@
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import jwt from 'jsonwebtoken';
+
+const YourComponent = () => {
+  const generateToken = () => {
+    // Your secret key for signing the token
+    const secretKey = 'your_secret_key';
+
+    // Your text to encode
+    const normalText = 'your_text_to_encode';
+
+    // Create JWT token
+    const token = jwt.sign({ data: normalText }, secretKey, { expiresIn: '1h' });
+
+    console.log('Generated JWT token:', token);
+  };
+
+  return (
+    <View>
+      <Text>React Native JWT Example</Text>
+      <Button title="Generate Token" onPress={generateToken} />
+    </View>
+  );
+};
+
+export default YourComponent;

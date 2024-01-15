@@ -1,5 +1,6 @@
 import React, {
     forwardRef,
+    useEffect,
     useImperativeHandle,
     useRef,
     useState,
@@ -19,8 +20,9 @@ import {
 } from 'react-native';
 import InputText from '../InputText/InputText';
 import styles from './Styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setfirstscreen } from '../../Redux/Slice2';
+import { setPhone } from '../../Redux/Slice';
 
 //import DropdownList from './DropDownList';
 interface FirstProps {
@@ -37,6 +39,7 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
     const [validpersonal, setvalidpersonal] = useState(false);
     const [validcontact, setvalidcontact] = useState(false);
     const dispatch = useDispatch();
+    const iconstatus=useSelector((state:any)=>state.button.FirstScreenButtonStatus);
     const details = {
         contactnumber: useRef(''),
         phoneNumber: useRef(''),
@@ -82,6 +85,7 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
 
 
     }
+    /*
     if (validpersonal && validcontact) {
         console.log("here enter it::")
         totalvalidation(true);
@@ -90,11 +94,22 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
     }
     else if (validpersonal! || validcontact!) {
         dispatch(setfirstscreen(false))
-    }
+    }*/
+    useEffect(() => {
+        if (validpersonal && validcontact) {
+            console.log("here enter it::")
+            totalvalidation(true);
+            dispatch(setfirstscreen(true));
+        } else if (validpersonal || validcontact) {
+            dispatch(setfirstscreen(false));
+        }
+    }, [validpersonal, validcontact]);
+    
 
     function validationcheck() {
 
         if (validpersonal && validcontact) {
+            dispatch(setPhone(details.phoneNumber.current));
             setScreen(2)
         }
         else if (validpersonal && !validcontact) {
@@ -117,7 +132,7 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
         <View style={{ height: 700, backgroundColor: '#FFFFFF' }}>
             <CustomHeader details="Enter your personal information" />
             <View style={personalnumber ? styles.inputbox : styles.inputboxno} >
-                <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={styles.img} /></View>
+                <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/contact.png')} style={!iconstatus?styles.img:styles.imgverified} /></View>
                 <InputText
                     placeholder="Enter Your Unique Personal No."
                     ChangeText={(text: any) => {
@@ -130,7 +145,7 @@ const First = forwardRef(({ totalvalidation, setScreen }: FirstProps, ref) => {
                 />
             </View>
             <View style={contactnumber ? styles.inputbox : styles.inputboxno}>
-                <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/phone.png')} style={styles.img} /></View>
+                <View style={{ backgroundColor: '#E6E6E6', width: 0 }}><Image source={require('../images/phone.png')} style={!iconstatus?styles.img:styles.imgverified} /></View>
                 <InputText
                     placeholder="Your Contact Number"
                     ChangeText={(text: any) => {

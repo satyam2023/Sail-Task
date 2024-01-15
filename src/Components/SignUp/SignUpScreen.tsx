@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import CustomFooter from "../CustomFooter/CustomFooter";
 import CustomHeader from "../CustomHeader/CustomHeader";
@@ -9,6 +9,7 @@ import Third from "../ThirdSignUpPage/Third";
 const SignUpScreen: React.FC<{}> = (props:any) => {
     const [CurrentScreen,setCurrentScreen]=useState(1);
     const [firstscreenvalid,setfirstscreenvalid]=useState(false)
+   
     function setScreen(num:number){
         setCurrentScreen(num);
 

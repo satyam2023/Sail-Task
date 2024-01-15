@@ -24,7 +24,12 @@ inputboxno:{
 },
 img:{
     margin:16,
-}
+    
+},
+imgverified:{
+    margin:16,
+    tintColor:'#233972',
+    },
     
 });
 export default styles;

@@ -13,7 +13,12 @@ inputbox:{
 },
 img:{
     margin:16,
+    
 }, 
+imgverified:{
+margin:16,
+tintColor:'#233972',
+},
  insidedropdown:{
     backgroundColor:'#FFFFFF'
   },
@@ -77,7 +82,17 @@ searchbox:{
     marginBottom:16,
     borderWidth:1,
     borderColor:'red',
-  }   
+  },
+  dropdown:{
+    paddingLeft:56, 
+    paddingVertical: 19,
+    fontWeight:'400',
+    fontSize: 14, 
+    lineHeight:17.5,
+  },
+  dropdownnew:{
+    color:'black',
+  }
 });
 export default styles;
 

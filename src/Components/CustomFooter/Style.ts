@@ -29,6 +29,15 @@ signuptxt:{
   marginTop:17,
   color:'#110F2480',
 },
+lastscreencircle:{
+  marginLeft:22,
+  height:56,
+  width:56,
+  backgroundColor:'#F5F7F9',
+  borderRadius:100,
+
+  marginTop:16,
+},
 signupbtn:{
     marginTop:16,
     marginLeft:20,
@@ -48,8 +57,8 @@ signupboth:{
 },
 signupthree:{
    marginTop:16,
-    marginLeft:20,
-    width:277,
+    marginLeft:13,
+    width:282,
     height:56,
     borderRadius:100,
    

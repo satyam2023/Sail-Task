@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF',
+        height:'100%',
     },
     btn: {
         width: 353,
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#233972',
         gap: 10,
         marginBottom: 16,
+       // alignSelf:'center',
         marginHorizontal: 20,
     },
     signbtn: {
@@ -28,6 +30,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         gap: 10,
         marginHorizontal: 20,
+       // alignSelf:'center',
         marginBottom: 47,
     },
     txt: {
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     },
     toptxt: {
         color: '#00235B',
-        width: 265,
+        width: 263,
         textAlign: 'center',
         fontSize: 24,
         fontWeight: "600",
@@ -67,9 +70,10 @@ const styles = StyleSheet.create({
     imgsail: {
         width: 90,
         height: 90,
-        marginTop: 14,
+       // marginTop: 14,
         alignSelf: 'center',
-        resizeMode: 'contain'
+       resizeMode: 'contain',
+        marginTop:64,
     },
     lowertxt: {
         color: '#110F2480',
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
     },
     toptxtcontainer: {
        // marginBottom: 42,
-        marginTop: 30,
+        marginTop: 18,
     },
     logocontainer: {
         marginTop: 64,

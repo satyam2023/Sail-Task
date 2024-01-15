@@ -31,5 +31,7 @@ const styles=StyleSheet.create({
      imgdrop:{
         marginVertical:22,
      },
+     imgverified:{margin:16,
+    tintColor:'rgba(35, 57, 114, 1)'}
 });
 export default styles;

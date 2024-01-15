@@ -24,10 +24,10 @@ const HomeScreen = (props:any) => {
         <View style={styles.container}>
         <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
         
-        <View style={styles.logocontainer}>
+        
        
         <Image source={require('../images/Sail.png')}  style={styles.imgsail}/> 
-        </View>
+       
          <View style={styles.toptxtcontainer}>
             <Text style={styles.toptxt}>Track your sales meeting hassle free</Text>
          <Text style={styles.lowertxt}>Effortlessly organize and elevate your meetings</Text> 

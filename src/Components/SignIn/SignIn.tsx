@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style";
 import InputText from "../InputText/InputText";
+import { setLogIn } from "../../Redux/Slice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -11,10 +13,64 @@ const SignIn:React.FC<{}>=(props:any)=>{
     const[passeye,setpasseye]=useState<boolean>(true);
     const[passstatus,setpassstatus]=useState(true);
     const[remembertick,setremembertick]=useState(true);
+    const dispatch=useDispatch();
     const details = {
         passOne:useRef(''),
         phoneNumber: useRef(''),
     };
+
+const isLog=useSelector((state:any)=>state.user.isLog);
+
+   function handlesignin(){
+       
+        dispatch(setLogIn(
+            {
+               
+                password:details.passOne.current,
+                phonenumber:details.phoneNumber.current,
+            },
+        ))
+      console.log("isLog sttus:",isLog)
+        if(isLog){
+          props.navigation.navigate('MainScreen');
+        }
+    }
+    
+/*  var password=details.passOne.current;
+   var  PHONENUMBER=details.phoneNumber.current;
+
+    const handlesigni = async () => {
+        
+        if (!PHONENUMBER || !password) {
+          Alert.alert('Error', 'Please enter both username and password');
+          return;
+        }
+    
+        try {
+          
+          const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ PHONENUMBER, password }),
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            Alert.alert('Success', data.message);
+           
+          } else {
+            Alert.alert('Error', data.message);
+          }
+        } catch (error) {
+          console.error('Error during login:', error);
+        }
+      };
+      */
+
+      
 
 
     return(
@@ -64,7 +120,7 @@ const SignIn:React.FC<{}>=(props:any)=>{
                </TouchableOpacity>
                  
             </View>
-            <TouchableOpacity style={styles.signbtn}>
+            <TouchableOpacity style={styles.signbtn} onPress={handlesignin}>
                 <Text style={styles.txtofSign}>Sign In</Text>
             </TouchableOpacity >
             <View style={{width:236,marginTop:16,alignSelf:'center',flexDirection:'row'}}>

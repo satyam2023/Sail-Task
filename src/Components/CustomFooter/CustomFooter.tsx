@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -38,9 +38,9 @@ function handlebackscreen(){
     setScreen(CurrentScreen-1);
 }
 
-function completesignup(){
+/*function completesignup(){
     ThirdSubmit();
-}
+}*/
 
 
 
@@ -54,14 +54,14 @@ function completesignup(){
             <View  style={styles.footercontainer}>
                  
                  <View style={{flexDirection:'row'}}>
-               {  CurrentScreen>=2 && <TouchableOpacity style={styles.circleleft}
+               {  CurrentScreen>=2 && <TouchableOpacity style={CurrentScreen==2?styles.circleleft:styles.lastscreencircle}
                     onPress={handlebackscreen}>
                        <Image style={{width:24,height:24,marginTop:15,marginLeft:15,gap:10,transform:[{ rotate: '180deg'}]}} source={require('../images/Arrow.png')}/>
                     </TouchableOpacity>}
                     {CurrentScreen!=3?
                     <TouchableOpacity style={CurrentScreen!=2?styles.signupbtn:styles.signupboth} >
                          <Text style={styles.signuptxt}>Sign Up</Text>
-                    </TouchableOpacity>:<TouchableOpacity style={CurrentScreen!=2?[styles.signupthree,thirdscreenstatus?styles.signupbackblue:styles.signupbacknoblue]:styles.signupboth}  onPress={completesignup}>
+                    </TouchableOpacity>:<TouchableOpacity style={CurrentScreen!=2?[styles.signupthree,thirdscreenstatus?styles.signupbackblue:styles.signupbacknoblue]:styles.signupboth}  onPress={()=>ThirdSubmit()}>
                          <Text style={[styles.signuptxt,!thirdscreenstatus?styles.txte:styles.txet]}>Sign Up</Text>
                     </TouchableOpacity>}
                     { CurrentScreen==1 && <TouchableOpacity style={!firstscreenstatus?styles.circle:styles.bluecircle}
