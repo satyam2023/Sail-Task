@@ -9,14 +9,8 @@ import CustomHeader from '../CustomHeader/CustomHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { setThirdscreen } from '../../Redux/Slice2';
 import { setPassword, setSignUp } from '../../Redux/Slice';
-//const express = require('express');
-//const bodyParser = require('body-parser');
+const sign = require('jwt-encode');
 
-//var jwt = require('jsonwebtoken');
-//var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
-//const cors=require('cors');
-
-//const secretKey='Sat';
 
 
 import {
@@ -77,13 +71,7 @@ const Third = forwardRef(({setScreen,props }: ThirdProps, ref) => {
         }
       }
 
-    /*  if(validatepassword){
-        dispatch(setThirdscreen(true))
-      }
-      else if(!validatepassword){
-        dispatch(setThirdscreen(false))
-      }*/
-
+   
       useEffect(()=>{
         if(validatepassword){
           dispatch(setThirdscreen(true))
@@ -94,25 +82,31 @@ const Third = forwardRef(({setScreen,props }: ThirdProps, ref) => {
       },[validatepassword])
 var password=details.passOne.current;
 
+const name=useSelector((state:any)=>{state.user.username})
+
       function validationcheck(){
         console.log("Confirm password Statuis:::",confirmpassstatus)
        if(validatepassword){
-     //   const secretKey = 'sat';
- // const normalText = PHONENUMBER;
-  //const token = jwt.sign({ data: normalText }, secretKey, { expiresIn: '1h' });
+        const secret = 'secret';
+const data = {
+  number:PHONENUMBER,
+ password:password,
+ // iat: 1516239022
+};
+const jwt = sign(data, secret);
+console.log("token:",jwt);
 
-  //console.log('Generated JWT token:', token);
-        //const token = jwt.sign(PHONENUMBER, secretKey);
-       // console.log("token::",token)
         dispatch(setPassword(details.passOne.current));
         dispatch(setSignUp({
+
             phonenumber:PHONENUMBER,
             password: details.passOne.current,
-           //token:"kdmdkms#xkm@jdn",
+            token:jwt,
+            username:name,
           }))
         setScreen(1);
         props.navigation.navigate('SignIn') 
-  //handleSignup();
+  
         
        }
        else{
@@ -120,47 +114,9 @@ var password=details.passOne.current;
         setconfirmpassstatus(false);
        }
     }
-    // ...
-
-    const handleSignup = async () => {
-       // console.log("Entered inside it");
-       console.log("Phone number inside Async",PHONENUMBER);
-       
+   
 
     
-        if (!PHONENUMBER || !password) {
-          Alert.alert('Error', 'Please enter both phone number and password');
-          return;
-        }
-    
-        try {
-         
-         
-          const response = await fetch('http://localhost:3000/signup', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ 
-              PHONENUMBER:'999999999', 
-              password:'Satyam@1' })
-          });
-     console.log("REsponse::",response)
-          const data = await response.json();
-              
-          if (response.ok) {
-            Alert.alert('Success', data.message);
-            setScreen(1);
-            props.navigation.navigate('Login');
-          } else {
-            Alert.alert('Error', data.message);
-          }
-        } catch (error) {
-        
-          console.error('Error during signup:', error);
-        }
-      };
     
      
     useImperativeHandle(ref, () => ({

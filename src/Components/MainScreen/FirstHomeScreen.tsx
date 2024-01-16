@@ -5,9 +5,13 @@ import { StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./Style";
 import Footer from "../MainFooter/Footer";
+import Product from "../Product/Product";
 
+interface  ScreenProps{
+navigationprop:any
+}
 
-const FirstHomeScreen:React.FC<{}>=(props:any)=>{
+const FirstHomeScreen:React.FC<ScreenProps>=({navigationprop}:ScreenProps)=>{
     const [visit, setvisit] = useState<number>(16)
     return (<SafeAreaView style={{backgroundColor:'#E6E6E6'}} >
         <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
@@ -58,9 +62,13 @@ const FirstHomeScreen:React.FC<{}>=(props:any)=>{
     </View>
 
 </View>
+<Product  category="Product Catalogue" imagefirst='../images/steel.png' imagesecond='../images/rolled.png' imagefirstinfo="Stainless Steel Products" imagesecondinfo="Cold Rolled Products" text="See All"/>
+<Product  category="Customer Information" imagefirst="" imagesecond=" " imagefirstinfo="Sales Order Status" imagesecondinfo="MOU Status" text=""/>
+<Product  category="Category" imagefirst="" imagesecond=" " imagefirstinfo="User Enquiry" imagesecondinfo="Issue Enquiry" text="View All"/>
 
   </View>
-  <Footer/>
+  
+  <Footer props={navigationprop}/>
 
     </SafeAreaView>);
 }

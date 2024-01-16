@@ -1,26 +1,40 @@
 import React, { FC } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Footer:FC<{}>=()=>{
+interface Footerprops{
+  props:any
+}
+const Footer:FC<Footerprops>=({props}:Footerprops)=>{
 
     return(
        <SafeAreaView  >
-       
+
+      <View style={{height:96,width:'40%',backgroundColor:'#FFFFFF',position:'absolute',borderTopRightRadius:30,top:600}}>
+      <View style={{flexDirection:'row'}}>
+        <Image source={require('../images/Home.png')} style={{marginLeft:35,marginTop:39}}/>
+        <Image source={require('../images/shop.png')} style={{marginLeft:56,marginTop:39}} />
+</View>
+      </View>
+
+      <View style={{height:96,width:'45%',backgroundColor:'#FFFFFF',position:'absolute',marginLeft:'60%',borderTopLeftRadius:30,top:600 ,zIndex:2,}}>
+      <View style={{flexDirection:'row'}}>
         
-      <View style={{height:96,width:'40%',backgroundColor:'#FFFFFF',position:'absolute',borderTopRightRadius:30,top:400}}>
-
+         <Image source={require('../images/profile2user.png')} style={{marginLeft:35,marginTop:39}}/>
+         
+         
+           <Image source={require('../images/setting2.png')} style={{marginLeft:56,marginTop:39}}/>
+       
+          </View>
       </View>
-
-      <View style={{height:96,width:'45%',backgroundColor:'#FFFFFF',position:'absolute',marginLeft:'60%',borderTopLeftRadius:30,top:400}}>
-
-      </View>
-      <View style={{height:66,width:100,backgroundColor:'#FFFFFF',position:'absolute',marginLeft:'40%',top:430}}/>
+      <View style={{height:66,width:100,backgroundColor:'#FFFFFF',position:'absolute',marginLeft:'40%',top:630}}/>
       
-      <View style={{height:100,width:100,backgroundColor:'#E6E6E6',position:'absolute',left:'38%',top:350,borderRadius:90,}}/>
-     <View style={{height:56,width:56,alignSelf:'center',position:'absolute',backgroundColor:"#E67437",borderRadius:30,top:380}}>
+      <View style={{height:100,width:100,backgroundColor:'#E6E6E6',position:'absolute',left:'38%',top:550,borderRadius:100,}}/>
+     <TouchableOpacity onPress={()=>props.navigation.navigate('Visit')}>
+     <View style={{height:56,width:56,alignSelf:'center',position:'absolute',backgroundColor:"#E67437",borderRadius:30,top:580}}>
        <Image source={require('../images/plus.png')}/>
      </View>
+     </TouchableOpacity>
 
 
        </SafeAreaView>

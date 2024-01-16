@@ -20,7 +20,8 @@ margin:16,
 tintColor:'#233972',
 },
  insidedropdown:{
-    backgroundColor:'#FFFFFF'
+    backgroundColor:'#FFFFFF',
+  
   },
   line:{
 backgroundColor:'#F9F9FC',

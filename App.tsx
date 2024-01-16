@@ -20,6 +20,8 @@ import {
 import Splash from './src/Components/SplashScreen/Splash';
 import Routing from './src/Views/Screens/Route';
 import SignUpScreen from './src/Components/SignUp/SignUpScreen';
+//import 'react-native-crypto'
+import Visit from './src/Components/Visit/Visit';
 
 import {
   Colors,
@@ -43,6 +45,7 @@ function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
+   
    <Routes/>
     </Provider>
    

@@ -5,7 +5,7 @@ import styles from "./Style";
 import InputText from "../InputText/InputText";
 import { setLogIn } from "../../Redux/Slice";
 import { useDispatch, useSelector } from "react-redux";
-
+const sign = require('jwt-encode');
 
 
 const SignIn:React.FC<{}>=(props:any)=>{
@@ -22,10 +22,19 @@ const SignIn:React.FC<{}>=(props:any)=>{
 const isLog=useSelector((state:any)=>state.user.isLog);
 
    function handlesignin(){
+
+    const secret = 'secret';
+    const data = {
+      number:details.phoneNumber.current,
+     password:details.passOne.current,
+      //iat: 1516239022
+    };
+    const jwt = sign(data, secret);
+    console.log("token inside signin:",jwt);
+    
        
         dispatch(setLogIn(
             {
-               
                 password:details.passOne.current,
                 phonenumber:details.phoneNumber.current,
             },
@@ -35,44 +44,7 @@ const isLog=useSelector((state:any)=>state.user.isLog);
           props.navigation.navigate('MainScreen');
         }
     }
-    
-/*  var password=details.passOne.current;
-   var  PHONENUMBER=details.phoneNumber.current;
-
-    const handlesigni = async () => {
-        
-        if (!PHONENUMBER || !password) {
-          Alert.alert('Error', 'Please enter both username and password');
-          return;
-        }
-    
-        try {
-          
-          const response = await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ PHONENUMBER, password }),
-          });
-    
-          const data = await response.json();
-    
-          if (response.ok) {
-            Alert.alert('Success', data.message);
-           
-          } else {
-            Alert.alert('Error', data.message);
-          }
-        } catch (error) {
-          console.error('Error during login:', error);
-        }
-      };
-      */
-
-      
-
-
+  
     return(
         <SafeAreaView style={{backgroundColor:'#FFFFFF',height:'100%'}}>
             <StatusBar backgroundColor={"#FFFFFF"} barStyle={'dark-content'}/>

@@ -5,6 +5,8 @@ import InputText from "../InputText/InputText";
 import CustomHeader from "../CustomHeader/CustomHeader";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSecondscreen } from '../../Redux/Slice2';
+import { setUserName } from "../../Redux/Slice";
+
 interface SecondProps{
     setScreen:Function,
 
@@ -176,17 +178,12 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
             setvalidrole(true);
         }
       }
-
-   /*   if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
-        dispatch(setSecondscreen(true));
-  }
-  else if (Tag=="Location" || TagRole=="Your Role" || !validemail || !validname){
-    dispatch(setSecondscreen(false));
-  }*/
 useEffect(
 ()=>{
     if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
-        dispatch(setSecondscreen(true));
+        dispatch(
+            setUserName(details.name),
+            setSecondscreen(true));
   }
   else if (Tag=="Location" || TagRole=="Your Role" || !validemail || !validname){
     dispatch(setSecondscreen(false));
