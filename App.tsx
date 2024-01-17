@@ -34,6 +34,7 @@ import SignIn from './src/Components/SignIn/SignIn';
 import Routes from './src/Views/Screens/Route';
 import { Provider } from 'react-redux';
 import store from './src/Redux/Store';
+import Planned from './src/Components/Visit/PlannedVisit/Planned';
 
 type SectionProps = PropsWithChildren<{
   title: string;

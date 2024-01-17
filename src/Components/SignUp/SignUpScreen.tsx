@@ -20,21 +20,21 @@ const SignUpScreen: React.FC<{}> = (props:any) => {
     function FirstSubmit() {
         
         if (FirstScreenRef.current && CurrentScreen == 1) {
-            console.log("first submit")
+          //  console.log("first submit")
             FirstScreenRef.current.handleSubmit();
         }
     }
     function SecondSubmit() {
         
         if (SecondScreenRef.current && CurrentScreen == 2) {
-            console.log("Submit submit")
+           // console.log("Submit submit")
             SecondScreenRef.current.handleSubmit();
         }
     }
     function ThirdSubmit() {
         
         if (ThirdScreenRef.current && CurrentScreen == 3) {
-            console.log("Third submit")
+           // console.log("Third submit")
             ThirdScreenRef.current.handleSubmit();
         }
     }

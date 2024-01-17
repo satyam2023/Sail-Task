@@ -21,7 +21,7 @@ tintColor:'#233972',
 },
  insidedropdown:{
     backgroundColor:'#FFFFFF',
-  
+  //marginTop:30,
   },
   line:{
 backgroundColor:'#F9F9FC',
@@ -93,6 +93,12 @@ searchbox:{
   },
   dropdownnew:{
     color:'black',
+  },
+  dropvisible:{
+
+  },
+  dropnotvisible:{
+
   }
 });
 export default styles;

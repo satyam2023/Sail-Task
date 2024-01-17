@@ -1,9 +1,30 @@
-import React from "react";
-import { StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { FlatList, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
 import styles from "./Styles";
+import UpcomingVisit from "./UpComingVisit/Upcoming";
+import CustomerDetails from "./UpComingVisit/CustomerDetails";
+import Planned from "./PlannedVisit/Planned";
+import Executed from "./ExexutedVisit/Executed";
 const Visit:React.FC<{}>=(props:any)=>{
+    const Data=[{id:1}]
+    const renderItem=(item:any)=>{
+        console.log("iteration numebr",item.item)
+       
+        return(
+            
+            <UpcomingVisit id={item.item} status={setStatus}/>
+           
+        );
+    }
+    
+    const [customerdetailStatus,setcustomerdetailStatus]=useState(false);
+    const [CurrentScreen,setCurrentScreen]=useState<number>(1);
+    const [planneddetailStatus,setplanneddetailstatus]=useState<boolean>(false);
+    function setStatus(param:any){
+      setcustomerdetailStatus(param);
+    }
     return(
         <SafeAreaView style={{backgroundColor:'#F9F9FC',height:'100%'}}>
             <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
@@ -14,22 +35,22 @@ const Visit:React.FC<{}>=(props:any)=>{
                 <Text style={{marginTop:13,color:'#FFFFFF',marginLeft:16,width:44,height:36,fontWeight:"600",fontSize:16}}>Visits</Text>
             </View>
             <View style={{flexDirection:'row'}}>
-            <TouchableOpacity style={styles.heading}>
-                <Text style={{fontWeight:'500',fontSize:14,lineHeight:15,color:'#FFFFFF'}}>Upcoming</Text>
-                <View style={{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#FFFFFF',alignSelf:'center'}}>
-                    <Text style={{alignSelf:'center',marginTop:4,color:'#5CC7D7',fontWeight:"500",fontSize:12,lineHeight:15}}>16</Text>
+            <TouchableOpacity style={CurrentScreen==1?styles.heading:styles.notheading} onPress={()=>{setCurrentScreen(1)}}>
+                <Text style={CurrentScreen==1?{fontWeight:'500',fontSize:14,lineHeight:15,color:'#FFFFFF'}:{fontWeight:'500',fontSize:14,lineHeight:15,color:'#5CC7D7'}}>Upcoming</Text>
+                <View style={CurrentScreen==1?{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#FFFFFF',alignSelf:'center'}:{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#5CC7D7',alignSelf:'center'}}>
+                    <Text style={CurrentScreen==1?{alignSelf:'center',marginTop:4,color:'#5CC7D7',fontWeight:"500",fontSize:12,lineHeight:15}:{alignSelf:'center',marginTop:4,color:'#FFFFFF',fontWeight:"500",fontSize:12,lineHeight:15}}>16</Text>
                 </View>
 
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.heading,styles.plannedheading]}>
-                <Text style={{fontWeight:'500',fontSize:14,lineHeight:15,color:'#233972'}}>Planned</Text>
-                <View style={{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#FFFFFF',alignSelf:'center'}}>
-                    <Text style={{alignSelf:'center',marginTop:4,color:'#233972',fontWeight:"500",fontSize:12,lineHeight:15}}>16</Text>
+            <TouchableOpacity style={CurrentScreen!=2?[styles.heading,styles.plannedheading]:[styles.heading,styles.secondheading]} onPress={()=>{setCurrentScreen(2)}}>
+                <Text style={CurrentScreen!=2?{fontWeight:'500',fontSize:14,lineHeight:15,color:'#233972'}:{fontWeight:'500',fontSize:14,lineHeight:15,color:'#FFFFFF'}}>Planned</Text>
+                <View style={CurrentScreen!=2?{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#233972',alignSelf:'center'}:{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#FFFFFF',alignSelf:'center'}}>
+                    <Text style={CurrentScreen!=2?{alignSelf:'center',marginTop:4,color:'#FFFFFF',fontWeight:"500",fontSize:12,lineHeight:15}:{alignSelf:'center',marginTop:4,color:'#233972',fontWeight:"500",fontSize:12,lineHeight:15}}>16</Text>
                 </View>
 
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.heading,styles.executedheading]}>
-                <Text style={{fontWeight:'500',fontSize:14,lineHeight:15,color:'#14A223'}}>Executed</Text>
+            <TouchableOpacity style={CurrentScreen!=3?[styles.heading,styles.executedheading]:[styles.heading,styles.notexecutedheading]} onPress={()=>{setCurrentScreen(3)}}>
+                <Text style={CurrentScreen!=3?{fontWeight:'500',fontSize:14,lineHeight:15,color:'#14A223'}:{fontWeight:'500',fontSize:14,lineHeight:15,color:'#FFFFFF'}}>Executed</Text>
                
 
             </TouchableOpacity>
@@ -41,10 +62,11 @@ const Visit:React.FC<{}>=(props:any)=>{
                 <TextInput
                 placeholder="Enter text to search"
                 placeholderTextColor={'#00000080'}
+                
                 style={styles.textinput}
                 />
           <TouchableOpacity>
-                <Image source={require('../images/search.png')} style={{marginLeft:121}}/>
+                <Image source={require('../images/search.png')} style={{marginLeft:101,marginTop:18}}/>
                 </TouchableOpacity>
             </View>
             <TouchableOpacity>
@@ -53,6 +75,13 @@ const Visit:React.FC<{}>=(props:any)=>{
             
 
             </View>
+            
+          { CurrentScreen==1 && customerdetailStatus==false && <FlatList data={Data} renderItem={renderItem}/> }
+          { CurrentScreen==1 && customerdetailStatus==true && <CustomerDetails status={setStatus}/>}   
+          { CurrentScreen==2 && <Planned/> }
+          { CurrentScreen==3 &&  <Executed/> }
+        
+
 
 
         

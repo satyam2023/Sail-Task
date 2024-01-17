@@ -39,7 +39,7 @@ const isLog=useSelector((state:any)=>state.user.isLog);
                 phonenumber:details.phoneNumber.current,
             },
         ))
-      console.log("isLog sttus:",isLog)
+     // console.log("isLog sttus:",isLog)
         if(isLog){
           props.navigation.navigate('MainScreen');
         }

@@ -50,7 +50,7 @@ const userSlice = createSlice({
         console.log("Reduc Login data action reciewved password:",action.payload.password);
         console.log("intial or previous password :",item.password)
         
-        console.log("action payload of ")
+       // console.log("action payload of ")
         if((item.phonenumber==action.payload.phonenumber)  && (item.password==action.payload.password)){
           console.log("enter data match with registered user");
           state.isLog=true;

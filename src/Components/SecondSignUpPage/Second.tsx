@@ -33,11 +33,12 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
     function dropview() {
         if (toggle) {
             return (
+                
                 <Modal
                     visible={toggle}
                     animationType='slide'
                     transparent={true}
-                    style={{ flexDirection: 'column', backgroundColor: '#FFFFFF',  width: 353,height:167,}}
+                    style={{ flexDirection: 'column', backgroundColor: '#FFFFFF',  width: 353,height:167,marginTop:300, }}
 
                 >
                                 <TouchableOpacity onPress={() => {
@@ -45,7 +46,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
                                     settoggle(false)
                                     setdropstatus(true)
                                 }}
-                                style={styles.insidedropdown}><Text style=
+                                style={{marginTop:430,backgroundColor:'#FFFFFF'}}><Text style=
                                 {styles.droptext}>Delhi</Text></TouchableOpacity>
                                 <View style={styles.line}></View>
                                 <TouchableOpacity onPress={() => {
@@ -64,6 +65,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
                                 style={styles.insidedropdown}><Text style=
                                 {styles.droptext}>Indore</Text></TouchableOpacity>    
                 </Modal>
+               
 
 
 
@@ -82,12 +84,13 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
                     style={{ flexDirection: 'column', backgroundColor: '#FFFFFF',  width: 353,height:167,}}
 
                 >
+                    <ScrollView>
                                 <TouchableOpacity onPress={() => {
                                     setTagRole("Product Executive")
                                     settogglerole(false)
                                     setdropstatusrole(true)
                                 }}
-                                style={styles.insidedropdown}><Text style=
+                                style={{marginTop:505,backgroundColor:'#FFFFFF'}}><Text style=
                                 {styles.droptext}>Product Executive</Text></TouchableOpacity>
                                 <View style={styles.line}></View>
                                 <TouchableOpacity onPress={() => {
@@ -138,6 +141,7 @@ const Second = forwardRef(({setScreen}: SecondProps, ref) => {
                                 style={styles.insidedropdown}><Text style=
                                 {styles.droptext}>HQ</Text></TouchableOpacity>
                                   
+                                  </ScrollView>
                 </Modal>
 
 
@@ -183,7 +187,12 @@ useEffect(
     if(Tag!="Location" && TagRole!="Your Role" && validemail && validname ){
         dispatch(
             setUserName(details.name),
-            setSecondscreen(true));
+            setSecondscreen(true)
+            );
+            dispatch(
+                setSecondscreen(true)
+                );
+           
   }
   else if (Tag=="Location" || TagRole=="Your Role" || !validemail || !validname){
     dispatch(setSecondscreen(false));
@@ -263,7 +272,10 @@ useEffect(
                         </Text>
                         <View style={{ backgroundColor: '#E6E6E6', width: 0,position:'absolute',left:313,}}><Image source={require('../images/Downward.png')} style={styles.imgdrop}/></View>
                     </TouchableOpacity>
+                    
                     {dropview()}
+                    
+                   
 
                 
                 

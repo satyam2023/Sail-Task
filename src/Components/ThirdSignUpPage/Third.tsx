@@ -85,7 +85,7 @@ var password=details.passOne.current;
 const name=useSelector((state:any)=>{state.user.username})
 
       function validationcheck(){
-        console.log("Confirm password Statuis:::",confirmpassstatus)
+       // console.log("Confirm password Statuis:::",confirmpassstatus)
        if(validatepassword){
         const secret = 'secret';
 const data = {
@@ -94,7 +94,7 @@ const data = {
  // iat: 1516239022
 };
 const jwt = sign(data, secret);
-console.log("token:",jwt);
+console.log("token inside signup::",jwt);
 
         dispatch(setPassword(details.passOne.current));
         dispatch(setSignUp({
