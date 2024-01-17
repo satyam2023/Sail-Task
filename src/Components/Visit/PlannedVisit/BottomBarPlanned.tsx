@@ -1,11 +1,15 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style";
+import Status from "../../StatusBar/Status";
+interface BottomProps{
+   status:any,
+}
 
-const BottomBar:React.FC<{}>=()=>{
+const BottomBar:React.FC<BottomProps>=({status}:BottomProps)=>{
     return(
         <View style={styles.bottomcontainer}>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={()=>{status(false)}}>
             <Text style={styles.canceltext}>
             Cancel Visit
             </Text>

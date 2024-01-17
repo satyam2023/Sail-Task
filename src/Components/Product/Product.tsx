@@ -30,11 +30,11 @@ const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imag
 
             <View style={{flexDirection:'row'}}> 
             <View style={{marginLeft:20,width:186,height:90,borderRadius:4,}}>
-            <Image source={require('../images/steel.png')}  style={styles.img} />
+            <Image source={imagefirst}  style={styles.img} />
             <Text style={{width:'auto', height:14,marginTop:8,fontSize:14,fontWeight:"500",lineHeight:14,color:'#110F24',alignSelf:'center'}}>{imagefirstinfo}</Text>
             </View>
         <View>
-           <Image  source={require('../images/rolled.png')} style={styles.img} />
+           <Image  source={imagesecond} style={styles.img} />
            <Text style={{width:'auto', height:14,marginTop:8,fontSize:14,fontWeight:"500",lineHeight:14,color:'#110F24',alignSelf:'center'}}>{imagesecondinfo}</Text>
            </View>
             </View> 

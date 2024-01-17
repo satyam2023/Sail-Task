@@ -9,16 +9,15 @@ interface CustomerProps{
 const CustomerDetails:React.FC<CustomerProps>=(props:any)=>{
 
    const renderItem=(item:any)=>{
-    
+     console.log("item details::",item.item);
     return(
         <CustomerCommon uppertext={item.item.uppertext} lowertext={item.item.lowertext} imagepath={item.item.imagepath}/>
     );
    }
 
     return(
-        <View style={{backgroundColor:'#FFFFFF',width:353,height:'100%',marginLeft:20,marginTop:16,borderRadius:10}}>
-           
-            <View style={{width:353,height:70,backgroundColor:'#FFFFFF',borderRadius:10,flexDirection:'row',marginTop:16,marginLeft:0}}>
+        <View style={{backgroundColor:'#FFFFFF',width:353,marginLeft:20,marginTop:16,borderRadius:10,flex:1}}>
+ <View style={{width:353,height:70,backgroundColor:'#FFFFFF',borderRadius:10,flexDirection:'row',marginTop:16,marginLeft:0}}>
                 <Image source={require('../../images/profile2user.png')} style={styles.img}/>
                 <View style={{width:248,marginLeft:16.5}}>
                 <Text style={styles.customertext}>Customer Visit 1</Text>
@@ -30,11 +29,12 @@ const CustomerDetails:React.FC<CustomerProps>=(props:any)=>{
                    width:8,height:13
                 }}/>
                 </TouchableOpacity>
-            </View>
-            
+            </View> 
             <FlatList
             data={Data}
-            renderItem={renderItem} 
+            renderItem={renderItem}
+            scrollEnabled={true} 
+            
             />
             
             </View>

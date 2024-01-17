@@ -1,4 +1,5 @@
  const Data=[
+  
     { uppertext:"Customer Code",
      lowertext:"987654321",
      imagepath:require('../../images/profile2user.png')
@@ -38,6 +39,16 @@
        lowertext:"+91-9999-123-456" ,
       imagepath:require('../../images/profile2user.png')
 
+      },
+      {
+        uppertext:"Planned by", 
+        lowertext:"John Doe", 
+        imagepath:require('../../images/profile2user.png')
+      },
+      {
+        uppertext:"Planned by", 
+        lowertext:"John Doe", 
+        imagepath:require('../../images/profile2user.png')
       },
       {
         uppertext:"Planned by", 

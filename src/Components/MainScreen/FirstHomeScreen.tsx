@@ -62,9 +62,9 @@ const FirstHomeScreen:React.FC<ScreenProps>=({navigationprop}:ScreenProps)=>{
     </View>
 
 </View>
-<Product  category="Product Catalogue" imagefirst='../images/steel.png' imagesecond='../images/rolled.png' imagefirstinfo="Stainless Steel Products" imagesecondinfo="Cold Rolled Products" text="See All"/>
-<Product  category="Customer Information" imagefirst="" imagesecond=" " imagefirstinfo="Sales Order Status" imagesecondinfo="MOU Status" text=""/>
-<Product  category="Category" imagefirst="" imagesecond=" " imagefirstinfo="User Enquiry" imagesecondinfo="Issue Enquiry" text="View All"/>
+<Product  category="Product Catalogue" imagefirst={require('../images/steel.png')} imagesecond={require('../images/rolled.png')} imagefirstinfo="Stainless Steel Products" imagesecondinfo="Cold Rolled Products" text="See All"/>
+<Product  category="Customer Information" imagefirst={require('../images/Customer.png')} imagesecond={require('../images/Customer.png')} imagefirstinfo="Sales Order Status" imagesecondinfo="MOU Status" text=""/>
+<Product  category="Category" imagefirst={require('../images/Customer.png')} imagesecond={require('../images/setting2.png')} imagefirstinfo="User Enquiry" imagesecondinfo="Issue Enquiry" text="View All"/>
 
   </View>
   
