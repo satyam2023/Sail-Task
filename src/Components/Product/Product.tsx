@@ -20,12 +20,17 @@ const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imag
         <View style={styles.box}>
           
           <View style={{flexDirection:'row'}}> 
+         
           <Text style={{marginTop:16,marginLeft:20,fontWeight:"600",fontSize:14,lineHeight:14,color:'#110F24'}}>
                 {category}
             </Text>
-            <Text style={{marginTop:16,left:326,fontWeight:"600",fontSize:14,lineHeight:14,color:'#110F24',position:'absolute'}}>
+            <TouchableOpacity style={{position:'absolute',left:326}} 
+            onPress={()=>{navigationprops.navigation.navigate('NearByCustomer')}}
+            >
+            <Text style={{marginTop:16,fontWeight:"600",fontSize:14,lineHeight:14,color:'#110F24',}}>
                 {text}
             </Text>
+            </TouchableOpacity>
 
             </View> 
 
@@ -34,6 +39,7 @@ const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imag
                 if(imagefirstinfo=="User Enquiry"){
                       navigationprops.navigation.navigate('Enquiry')
                 }
+                
             }}>
             <Image source={imagefirst}  style={styles.img} />
             <Text style={{width:'auto', height:14,marginTop:8,fontSize:14,fontWeight:"500",lineHeight:14,color:'#110F24',alignSelf:'center'}}>{imagefirstinfo}</Text>

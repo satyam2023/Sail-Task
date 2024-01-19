@@ -8,6 +8,9 @@ import MainScreen from '../../Components/MainScreen/MainScreen';
 import Visit from '../../Components/Visit/Visit';
 import Enquiry from '../../Components/UserEnquiry Screen/Enquiry';
 import IssueEnquiry from '../../Components/Issue Enquiry/IssueEnquiry';
+import NearByCustomer from '../../Components/NearbyCustomer/NearByCustomer';
+import NearbyCustomer from '../../Components/NearbyCustomer/NearByCustomer';
+import Details from '../../Components/CustomerRegistration/Details';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +26,8 @@ const Routes = () => {
         <Stack.Screen options={{headerShown: false}} name="Visit" component={Visit} />
         <Stack.Screen options={{headerShown: false}} name="Enquiry" component={Enquiry} />
         <Stack.Screen options={{headerShown: false}} name="IssueEnquiry" component={IssueEnquiry} />
+        <Stack.Screen options={{headerShown: false}} name="NearByCustomer" component={NearbyCustomer} />
+        <Stack.Screen options={{headerShown: false}} name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
   );

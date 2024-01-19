@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CommonButton from "./CommonButton";
 import styles from "./Styles";
 import { LocationData, DataOfIssue } from "./IssueData";
+import DetailsCard from "./DetailsCard";
 const IssueEnquiry: React.FC<{}> = (props: any) => {
     const Data = [{ text: "User Enquiry" }, { text: "Issue Enquiry" }, { text: "Nearby Customers" }];
     const [CurrentLocation, setCurrentLocation] = useState<String>("Select Branch Location");
@@ -61,6 +62,10 @@ const IssueEnquiry: React.FC<{}> = (props: any) => {
 
     }
 
+    
+
+    
+
 
     return (
         <SafeAreaView >
@@ -98,7 +103,7 @@ const IssueEnquiry: React.FC<{}> = (props: any) => {
                     : <></>}
                 <TextInput placeholder="Enter Customer Code or Name"
                     placeholderTextColor={!FocusStatus ? '#110F2480' : '#FFFFFF'}
-                    style={!FocusStatus ? { marginLeft: 16, color: '#110F24', fontWeight: "400", fontSize: 14, lineHeight: 15 } : { marginLeft: 24, color: '#110F24', fontWeight: "400", fontSize: 14, lineHeight: 15, position: 'absolute', top: 5 }}
+                    style={!FocusStatus ? { marginLeft: 16, color: '#110F24', fontWeight: "400", fontSize: 14, lineHeight: 15 } : { marginLeft: 24, color: '#110F24', fontWeight: "400", fontSize: 14, lineHeight: 15, position: 'absolute', top: 9 }}
                     onFocus={() => { setFocusStatus(true) }}
                     onChangeText={(text: string) => { details.name.current = text; }}
                     cursorColor={'transparent'}
@@ -124,34 +129,15 @@ const IssueEnquiry: React.FC<{}> = (props: any) => {
             {locationStatus == true && <FlatList data={LocationData} renderItem={RenderItem}
                 style={{ marginHorizontal: 20, backgroundColor: '#FFFFFF', marginTop: 5, borderRadius: 20 }} />}
 
-            {!searchresult ? <TouchableOpacity style={!SearchBtnStatus ? styles.searchbtn : styles.searchbtns} onPress={SearchingData}>
+            <TouchableOpacity style={!SearchBtnStatus ? styles.searchbtn : styles.searchbtns} onPress={SearchingData}>
                 <Text style={!SearchBtnStatus ?{ width: 106, color: '#110F2480', height: 18, marginHorizontal: 152, fontWeight: '500', fontSize: 14, lineHeight: 17.5, marginTop: 19 }:{ width: 106, color: '#233972', height: 18, marginHorizontal: 152, fontWeight: '500', fontSize: 14, lineHeight: 17.5, marginTop: 19 }}>
                     Search
                 </Text>
-            </TouchableOpacity> : <View style={{ height: 123, width: 353, borderRadius: 10, backgroundColor: '#FFFFFF', marginLeft: 20, marginTop: 24 }}>
-                  
-                  <View style={{marginTop:16}}>
-                <Text style={{width:71,height:14,marginLeft:16,color:'#666666',fontWeight:'400',fontSize:14,lineHeight:14}}>
-                    Issue Type
-                </Text>
-                    <Text style={{ fontWeight: '500', fontSize: 14, lineHeight: 16, marginLeft: 16, height: 16, width: 248, color: '#110F24', marginTop: 8}}>
-                       {data.issue} 
-                    </Text>
-                    </View>
-
-                    <View>
-                        
-                    </View>
-                    
-                    
-                
-                
-
-              
-
-            </View>}
-
+            </TouchableOpacity> 
+            {searchresult ? <DetailsCard issue={data.issue} pending={data.pending} date={data.date}/>:<></>}
         </SafeAreaView>
+
+
     );
 
 }

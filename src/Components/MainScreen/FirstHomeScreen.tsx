@@ -12,6 +12,7 @@ props:any
 }
 
 const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
+    console.log("props::",props)
     const [visit, setvisit] = useState<number>(16)
     return (<SafeAreaView style={{backgroundColor:'#E6E6E6'}} >
         <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
@@ -31,7 +32,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 </View>
 <View style={{flexDirection:'row'}}>
 
-    <TouchableOpacity style={styles.upcoming} onPress={()=>{props.navigation.navigate('Visit')}}>
+    <TouchableOpacity style={styles.upcoming} onPress={()=>{props.navigation.navigate('Visit');}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../images/Visit.png')} style={styles.visitimg}></Image>
         <Text style={styles.visitnumber}>{visit}</Text>
@@ -68,7 +69,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 
   </View>
   
-  <Footer  color="#E6E6E6"/>
+  <Footer  color="#E6E6E6" navigationprops={props}/>
 
     </SafeAreaView>);
 }

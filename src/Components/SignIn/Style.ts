@@ -29,6 +29,18 @@ inputbox:{
     marginBottom:16,
      
  },
+ inputboxnot:{
+    width:353,
+    height:56,
+    borderRadius:33,
+    marginLeft:20,
+    backgroundColor:'#F5F7F9',
+    flexDirection:'row',
+    marginBottom:16,
+    borderColor:'red',
+    borderWidth:1
+     
+ },
  inputboxno:{
      width:353,
      height:56,

@@ -23,6 +23,7 @@ import SignUpScreen from './src/Components/SignUp/SignUpScreen';
 //import 'react-native-crypto'
 import Visit from './src/Components/Visit/Visit';
 import MainScreen from './src/Components/MainScreen/MainScreen';
+import NearbyCustomer from './src/Components/NearbyCustomer/NearByCustomer';
 
 import {
   Colors,
@@ -38,6 +39,8 @@ import store from './src/Redux/Store';
 import Planned from './src/Components/Visit/PlannedVisit/Planned';
 import Enquiry from './src/Components/UserEnquiry Screen/Enquiry';
 import IssueEnquiry from './src/Components/Issue Enquiry/IssueEnquiry';
+import Registration from './src/Components/CustomerRegistration/Header';
+import Details from './src/Components/CustomerRegistration/Details';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -49,8 +52,7 @@ function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
-   <Routes/>
-  
+     <Routes/>
     </Provider>
    
   );
