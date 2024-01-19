@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FlatList, ScrollView, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
 import styles from "./Styles";
@@ -34,7 +34,7 @@ const Visit:React.FC<{}>=(props:any)=>{
                  </TouchableOpacity> 
                 <Text style={{marginTop:13,color:'#FFFFFF',marginLeft:16,width:44,height:36,fontWeight:"600",fontSize:16}}>Visits</Text>
             </View>
-            <View style={{flexDirection:'row'}}>
+            <ScrollView style={{ flexGrow: 0 }} horizontal={true} showsHorizontalScrollIndicator={false} automaticallyAdjustContentInsets={false}>
             <TouchableOpacity style={CurrentScreen==1?styles.heading:styles.notheading} onPress={()=>{setCurrentScreen(1)}}>
                 <Text style={CurrentScreen==1?{fontWeight:'500',fontSize:14,lineHeight:15,color:'#FFFFFF'}:{fontWeight:'500',fontSize:14,lineHeight:15,color:'#5CC7D7'}}>Upcoming</Text>
                 <View style={CurrentScreen==1?{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#FFFFFF',alignSelf:'center'}:{height:24,width:24,borderRadius:24,marginLeft:10,backgroundColor:'#5CC7D7',alignSelf:'center'}}>
@@ -54,7 +54,7 @@ const Visit:React.FC<{}>=(props:any)=>{
                
 
             </TouchableOpacity>
-            </View>
+            </ScrollView>
 
             <Text style={{fontWeight:'400',fontSize:12,lineHeight:15,marginLeft:20,marginTop:16}}>Enter Customer Code or Name or Executive's Name</Text>
             <View style={{flexDirection:'row'}}>  

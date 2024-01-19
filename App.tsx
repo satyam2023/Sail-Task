@@ -22,6 +22,7 @@ import Routing from './src/Views/Screens/Route';
 import SignUpScreen from './src/Components/SignUp/SignUpScreen';
 //import 'react-native-crypto'
 import Visit from './src/Components/Visit/Visit';
+import MainScreen from './src/Components/MainScreen/MainScreen';
 
 import {
   Colors,
@@ -35,6 +36,8 @@ import Routes from './src/Views/Screens/Route';
 import { Provider } from 'react-redux';
 import store from './src/Redux/Store';
 import Planned from './src/Components/Visit/PlannedVisit/Planned';
+import Enquiry from './src/Components/UserEnquiry Screen/Enquiry';
+import IssueEnquiry from './src/Components/Issue Enquiry/IssueEnquiry';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -46,8 +49,8 @@ function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
-   
- <Routes/>
+   <Routes/>
+  
     </Provider>
    
   );

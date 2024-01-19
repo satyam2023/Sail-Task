@@ -1,5 +1,5 @@
 import React from "react"
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./Style";
 import { Image } from "react-native";
@@ -10,9 +10,10 @@ interface ProductProps {
     text:any
     imagefirstinfo:any
     imagesecondinfo:any
+    navigationprops:any
 }
 
-const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imagefirstinfo,imagesecondinfo}:ProductProps)=>{
+const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imagefirstinfo,imagesecondinfo,navigationprops}:ProductProps)=>{
 
     return (
        
@@ -29,14 +30,22 @@ const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imag
             </View> 
 
             <View style={{flexDirection:'row'}}> 
-            <View style={{marginLeft:20,width:186,height:90,borderRadius:4,}}>
+            <TouchableOpacity style={{marginLeft:20,width:186,height:90,borderRadius:4,}} onPress={()=>{
+                if(imagefirstinfo=="User Enquiry"){
+                      navigationprops.navigation.navigate('Enquiry')
+                }
+            }}>
             <Image source={imagefirst}  style={styles.img} />
             <Text style={{width:'auto', height:14,marginTop:8,fontSize:14,fontWeight:"500",lineHeight:14,color:'#110F24',alignSelf:'center'}}>{imagefirstinfo}</Text>
-            </View>
-        <View>
+            </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+                if(imagefirstinfo=="User Enquiry"){
+                      navigationprops.navigation.navigate('IssueEnquiry')
+                }
+            }}>
            <Image  source={imagesecond} style={styles.img} />
            <Text style={{width:'auto', height:14,marginTop:8,fontSize:14,fontWeight:"500",lineHeight:14,color:'#110F24',alignSelf:'center'}}>{imagesecondinfo}</Text>
-           </View>
+           </TouchableOpacity>
             </View> 
 
 

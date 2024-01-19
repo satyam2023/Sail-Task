@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Alert, Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style";
@@ -40,10 +40,14 @@ const isLog=useSelector((state:any)=>state.user.isLog);
             },
         ))
      // console.log("isLog sttus:",isLog)
-        if(isLog){
-          props.navigation.navigate('MainScreen');
-        }
+       
     }
+
+    useEffect(()=>{
+        if(isLog){
+            props.navigation.navigate('MainScreen');
+          }
+    },[isLog])
   
     return(
         <SafeAreaView style={{backgroundColor:'#FFFFFF',height:'100%'}}>

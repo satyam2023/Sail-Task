@@ -22,7 +22,7 @@ const Executed:React.FC<{}>=()=>{
         );
     }
    return(
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
   {plannedView==false && <FlatList data={Data} renderItem={renderItem}/>}
   {plannedView==true && <>
    

@@ -8,10 +8,10 @@ import Footer from "../MainFooter/Footer";
 import Product from "../Product/Product";
 
 interface  ScreenProps{
-navigationprop:any
+props:any
 }
 
-const FirstHomeScreen:React.FC<ScreenProps>=({navigationprop}:ScreenProps)=>{
+const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
     const [visit, setvisit] = useState<number>(16)
     return (<SafeAreaView style={{backgroundColor:'#E6E6E6'}} >
         <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
@@ -31,7 +31,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({navigationprop}:ScreenProps)=>{
 </View>
 <View style={{flexDirection:'row'}}>
 
-    <View style={styles.upcoming}>
+    <TouchableOpacity style={styles.upcoming} onPress={()=>{props.navigation.navigate('Visit')}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../images/Visit.png')} style={styles.visitimg}></Image>
         <Text style={styles.visitnumber}>{visit}</Text>
@@ -39,7 +39,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({navigationprop}:ScreenProps)=>{
    <Text style={styles.upcomingvisit}>
    Upcoming Visits
    </Text>
-    </View>
+    </TouchableOpacity>
 
     <View style={styles.plannedvisit}>
         <View style={{flexDirection:'row'}}>
@@ -62,13 +62,13 @@ const FirstHomeScreen:React.FC<ScreenProps>=({navigationprop}:ScreenProps)=>{
     </View>
 
 </View>
-<Product  category="Product Catalogue" imagefirst={require('../images/steel.png')} imagesecond={require('../images/rolled.png')} imagefirstinfo="Stainless Steel Products" imagesecondinfo="Cold Rolled Products" text="See All"/>
-<Product  category="Customer Information" imagefirst={require('../images/Customer.png')} imagesecond={require('../images/Customer.png')} imagefirstinfo="Sales Order Status" imagesecondinfo="MOU Status" text=""/>
-<Product  category="Category" imagefirst={require('../images/Customer.png')} imagesecond={require('../images/setting2.png')} imagefirstinfo="User Enquiry" imagesecondinfo="Issue Enquiry" text="View All"/>
+<Product  navigationprops={props} category="Product Catalogue" imagefirst={require('../images/steel.png')} imagesecond={require('../images/rolled.png')} imagefirstinfo="Stainless Steel Products" imagesecondinfo="Cold Rolled Products" text="See All"/>
+<Product navigationprops={props} category="Customer Information" imagefirst={require('../images/Customer.png')} imagesecond={require('../images/Customer.png')} imagefirstinfo="Sales Order Status" imagesecondinfo="MOU Status" text=""/>
+<Product navigationprops={props}  category="Category" imagefirst={require('../images/Customer.png')} imagesecond={require('../images/setting2.png')} imagefirstinfo="User Enquiry" imagesecondinfo="Issue Enquiry" text="View All"/>
 
   </View>
   
-  <Footer props={navigationprop}/>
+  <Footer  color="#E6E6E6"/>
 
     </SafeAreaView>);
 }

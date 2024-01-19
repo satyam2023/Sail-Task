@@ -5,10 +5,9 @@ const styles=StyleSheet.create({
     box:{
         width:"100%",
         height:152,
-       
         marginTop:18,
         backgroundColor:'#FFFFFF',
-        zIndex:10,
+        zIndex:300,
     },
     img:{
         alignSelf:'center',
