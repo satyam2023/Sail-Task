@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { StatusBar } from "react-native";
 
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
 import styles from "./Style";
 import Footer from "../MainFooter/Footer";
 import Product from "../Product/Product";

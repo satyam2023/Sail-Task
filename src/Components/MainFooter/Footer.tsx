@@ -37,7 +37,7 @@ const Footer:FC<Footerprops>=({color,navigationprops}:Footerprops)=>{
       <View style={{height:66,width:100,backgroundColor:'#FFFFFF',position:'absolute',marginLeft:'40%',top:630}}/>
       
       <View style={{height:100,width:100,backgroundColor:color,position:'absolute',left:'38%',top:550,borderRadius:100,}}/>
-     <TouchableOpacity >
+     <TouchableOpacity onPress={()=>{navigationprops.navigation.navigate('BottomDrawer')}} >
      <View style={{height:56,width:56,alignSelf:'center',position:'absolute',backgroundColor:"#E67437",borderRadius:30,top:580}}>
        <Image source={require('../images/plus.png')}/>
      </View>

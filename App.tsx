@@ -8,6 +8,7 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import HomeScreen from './src/Components/Home/Home';
+import BottomDrawer from './src/Components/MainScreen/BottomDrawer/BottomDrawer';
 import {
   SafeAreaView,
   ScrollView,
@@ -41,6 +42,8 @@ import Enquiry from './src/Components/UserEnquiry Screen/Enquiry';
 import IssueEnquiry from './src/Components/Issue Enquiry/IssueEnquiry';
 import Registration from './src/Components/CustomerRegistration/Header';
 import Details from './src/Components/CustomerRegistration/Details';
+import Meeting from './src/Components/Meeting/Meeting';
+
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -52,7 +55,7 @@ function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
-     <Routes/>
+   <Routes/>
     </Provider>
    
   );

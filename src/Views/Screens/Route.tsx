@@ -11,6 +11,10 @@ import IssueEnquiry from '../../Components/Issue Enquiry/IssueEnquiry';
 import NearByCustomer from '../../Components/NearbyCustomer/NearByCustomer';
 import NearbyCustomer from '../../Components/NearbyCustomer/NearByCustomer';
 import Details from '../../Components/CustomerRegistration/Details';
+import BottomDrawer from '../../Components/MainScreen/BottomDrawer/BottomDrawer';
+
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +32,10 @@ const Routes = () => {
         <Stack.Screen options={{headerShown: false}} name="IssueEnquiry" component={IssueEnquiry} />
         <Stack.Screen options={{headerShown: false}} name="NearByCustomer" component={NearbyCustomer} />
         <Stack.Screen options={{headerShown: false}} name="Details" component={Details} />
+        <Stack.Screen options={{headerShown: false}} name="BottomDrawer" component={BottomDrawer} />
+       
       </Stack.Navigator>
+      
     </NavigationContainer>
   );
 }

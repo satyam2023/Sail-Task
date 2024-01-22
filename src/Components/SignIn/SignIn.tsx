@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
 import { Alert, Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import styles from "./Style";
 import InputText from "../InputText/InputText";
