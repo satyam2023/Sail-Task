@@ -36,12 +36,12 @@ const DropDown:React.FC<Props>=({data,heading,setReason}:Props)=>{
     return(
         <View>
             {focus?
-                <View style={{position:'absolute',top:19,left:44,zIndex:2}}>
+                <View style={{position:'absolute',top:25,left:44,zIndex:2}}>
                     <Text style={{fontWeight:'400',fontSize:12}}>{heading}</Text>
                 </View>:null}
 
         <TouchableOpacity style={dropType==1 ?styles.DropColumn:styles.Drop} onPress={()=>{setdropclicked(!dropclicked); }}>
-    <Text style={dropType==1?{width:214,fontWeight:'400',fontSize:14,lineHeight:17.5,height:18,marginTop:16,marginLeft:16}:{width:87,fontWeight:'400',fontSize:14,lineHeight:17.5,height:18,marginTop:16,marginLeft:16}}>{currentname}</Text>
+    <Text style={dropType==1?[{width:214,fontWeight:'400',fontSize:14,lineHeight:17.5,height:18,marginTop:16,marginLeft:16},focus?{color:'#110F24',marginTop:29,marginLeft:21}:{}]:[{width:87,fontWeight:'400',fontSize:14,lineHeight:17.5,height:18,marginTop:16,marginLeft:16},focus?{color:'#110F24',marginTop:29,marginLeft:21}:{}]}>{currentname}</Text>
     <Image source={require('../images/Arrow.png')} style={dropType==1?{tintColor:'#110F2480',transform:[{rotate:'90deg'}],marginTop:16,marginLeft:83}:{tintColor:'#110F2480',transform:[{rotate:'90deg'}],marginTop:16,marginLeft:183}}/>
  </TouchableOpacity>
  {dropclicked ?

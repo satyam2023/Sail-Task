@@ -5,6 +5,7 @@ import CommonButton from "./CommomButton";
 import Footer from "../MainFooter/Footer";
 import styles from "./Style";
 import {LocationData,DataOfPerson} from "./LocationData";
+import { HandledEventPhase } from "react-native-windows";
 const Enquiry:React.FC<{}>=(props:any)=>{
     const Data=[{text:"User Enquiry"},{text:"Issue Enquiry"},{text:"Nearby Customers"}];
     const [CurrentLocation,setCurrentLocation]=useState<String>("Select Location");
@@ -31,8 +32,25 @@ const Enquiry:React.FC<{}>=(props:any)=>{
         setSearchBtnStatus(true)
     },[CurrentLocation,FocusStatus])
 
-   function renderItem(item:any){  
-    return( <CommonButton text={item.item.text}/>);
+   function renderItem(item:any){ 
+    function handlenavigation(){
+            
+        if(item.item.text=="User Enquiry"){
+           
+            props.navigation.navigate('Enquiry')
+        }
+        else if(item.item.text=="Issue Enquiry"){
+            props.navigation.navigate('IssueEnquiry')
+        }
+        else if(item.item.text=="Nearby Customers"){
+            props.navigation.navigate('NearByCustomer');
+        }
+        
+    } 
+    return(
+        <TouchableOpacity onPress={handlenavigation}> 
+        <CommonButton text={item.item.text}/>
+        </TouchableOpacity>);
    }
 
    function RenderItem(item:any){

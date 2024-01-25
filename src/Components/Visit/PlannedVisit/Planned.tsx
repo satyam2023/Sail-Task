@@ -15,11 +15,8 @@ const Planned:React.FC<{}>=()=>{
     const Data=[{id:1}]
     const renderItem=(item:any)=>{
         console.log("iteration numebr",item.item)
-       
         return(
-            
             <UpcomingVisit id={item.item} status={setStatus}/>
-           
         );
     }
    return(
@@ -30,7 +27,6 @@ const Planned:React.FC<{}>=()=>{
  <BottomBar status={setStatus}/>
   </>
   }
- 
   </SafeAreaView>
    
    );

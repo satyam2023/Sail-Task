@@ -22,7 +22,23 @@ const NearbyCustomer:React.FC<{}>=(props:any)=>{
                 }
 
                 function renderItem(item: any) {
-                    return (<CommonButton text={item.item.text} />);
+                    function handlenavigation(){
+            
+                        if(item.item.text=="User Enquiry"){
+                           
+                            props.navigation.navigate('Enquiry')
+                        }
+                        else if(item.item.text=="Issue Enquiry"){
+                            props.navigation.navigate('IssueEnquiry')
+                        }
+                        else if(item.item.text=="Nearby Customers"){
+                            props.navigation.navigate('NearByCustomer');
+                        }
+                        
+                    }
+                    return (<TouchableOpacity onPress={handlenavigation}>
+                    <CommonButton text={item.item.text} />
+                    </TouchableOpacity>);
                 }
     return(
         <SafeAreaView>

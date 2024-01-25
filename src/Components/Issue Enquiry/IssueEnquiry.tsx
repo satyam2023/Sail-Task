@@ -23,6 +23,8 @@ const IssueEnquiry: React.FC<{}> = (props: any) => {
         name: useRef('')
     }
 
+   
+
     useEffect(() => {
         console.log("run effect")
         if (CurrentLocation != "Select Location" && details.name.current.length != 0)
@@ -30,7 +32,25 @@ const IssueEnquiry: React.FC<{}> = (props: any) => {
     }, [CurrentLocation, FocusStatus])
 
     function renderItem(item: any) {
-        return (<CommonButton text={item.item.text} />);
+        function handlenavigation(){
+            
+            if(item.item.text=="User Enquiry"){
+               
+                props.navigation.navigate('Enquiry')
+            }
+            else if(item.item.text=="Issue Enquiry"){
+                props.navigation.navigate('IssueEnquiry')
+            }
+            else if(item.item.text=="Nearby Customers"){
+                props.navigation.navigate('NearByCustomer');
+            }
+            
+        }
+      
+        return (
+        <TouchableOpacity onPress={()=>{handlenavigation()}}><CommonButton text={item.item.text} />
+        </TouchableOpacity>
+        );
     }
 
     function RenderItem(item: any) {

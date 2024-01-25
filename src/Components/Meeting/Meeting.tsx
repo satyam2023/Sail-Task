@@ -6,12 +6,20 @@ import CommonButton from "../Button/CommonButton";
 import styles from "./Style";
 import ForPlannedVisit from "./forPlannedVisit/ForPlannedVisit";
 import AddUnplannedVisit from "./addUnplannedVisit/AddUnplannedVisit";
+import MeetingCompleted from "./MeetingSuccess/MeetingCreationSucess";
 
 const Meeting:React.FC<{}>=(props:any)=>{
     const [click,setClicked]=useState<string>("For Planned Visit");
+    const [SuccessStatus,setSuccessStatus]=useState<boolean>(false)
+    function setVisitSuccess(param:any){
+        setSuccessStatus(param);
+    }
+    console.log("success status::",SuccessStatus)
     return(
-       <SafeAreaView>
+        <>
+        {!SuccessStatus?<SafeAreaView style={{}}>
         <Status/>
+        
        <MainHeader navigationProps={props} heading="Create Meeting Details"/>
        <View style={{flexDirection:'row',marginLeft:21}}>
         <TouchableOpacity onPress={()=>{setClicked("For Planned Visit")}}>
@@ -37,11 +45,16 @@ const Meeting:React.FC<{}>=(props:any)=>{
             </View>
             <ForPlannedVisit/>
             <ForPlannedVisit/>
-            <ForPlannedVisit/></>:<AddUnplannedVisit/>}
+            <ForPlannedVisit/></>:
+            <AddUnplannedVisit navigationProps={props} setVisitSuccess={setVisitSuccess}/>
+            }
             
 
 
-       </SafeAreaView>
+       </SafeAreaView>:<>
+       <MeetingCompleted navigationProps={props}/>
+       </>}
+       </>
     );
 }
 

@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles=StyleSheet.create({
     TextInputs: {
-        marginLeft:21,
+        marginLeft:16,
         backgroundColor:'#FFFFFF',
         marginTop:16,
         height:56,
@@ -12,7 +12,7 @@ const styles=StyleSheet.create({
         paddingVertical:19
     },
     TextInputFocus: {
-        marginLeft:21,
+        marginLeft:24,
         backgroundColor:'#FFFFFF',
         marginTop:16,
         height:56,

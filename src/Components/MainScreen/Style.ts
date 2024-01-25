@@ -101,6 +101,26 @@ Welcometextname:{
  marginLeft:16,
  marginTop:8,
     },
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+  bottomSheet: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    bottom: 0,
+    borderWidth: 1,
+    width:'100%',
+    borderRadius:5,
+    borderColor:'#FAFAFA',
+    backgroundColor:'#FAFAFA',
+   
+   
+},
 });
 export default styles;
 

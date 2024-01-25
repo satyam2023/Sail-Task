@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { StatusBar } from "react-native";
 
@@ -6,14 +6,26 @@ import { SafeAreaView } from "react-native";
 import styles from "./Style";
 import Footer from "../MainFooter/Footer";
 import Product from "../Product/Product";
+import BottomDrawer from "./BottomDrawer/BottomDrawer";
+import { useDispatch } from "react-redux";
+import {setVisitType} from "../../Redux/Slice2" 
+
 
 interface  ScreenProps{
 props:any
 }
 
 const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
-    console.log("props::",props)
-    const [visit, setvisit] = useState<number>(16)
+    
+    const [visit, setvisit] = useState<number>(16);
+    const BottomDrawerRef= useRef<any>();
+    const dispatch = useDispatch();
+    function PlusClicked() {
+        console.log("Bottom PLus Clicked Succesful:::")
+        console.log("abiut ref",BottomDrawerRef.current)
+        BottomDrawerRef.current.handleClicked();
+       
+    }
     return (<SafeAreaView style={{backgroundColor:'#E6E6E6'}} >
         <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
   <View style={styles.name}>
@@ -22,7 +34,8 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
     <Text style={styles.Welcometext}>Welcome,</Text> 
     <Text style={styles.Welcometextname}>Saransh Verma</Text>
     </View>
-<Image source={require('../images/mail.png')} style={{marginTop:21,marginLeft:115}}></Image>
+    <TouchableOpacity onPress={()=>{props.navigation.navigate('Message')}}>
+<Image source={require('../images/mail.png')} style={{marginTop:21,marginLeft:115}}/></TouchableOpacity>
 <Image source={require('../images/notification.png')} style={{marginTop:21,marginLeft:16}}></Image>
 <View style={styles.circle}>
     <Text style={{alignSelf:'center',color:'#FFFFFF',height:15,width:19,fontWeight:"500",fontSize:14,lineHeight:14,marginVertical:11,marginHorizontal:18,}}>
@@ -32,7 +45,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 </View>
 <View style={{flexDirection:'row'}}>
 
-    <TouchableOpacity style={styles.upcoming} onPress={()=>{props.navigation.navigate('Visit');}}>
+    <TouchableOpacity style={styles.upcoming} onPress={()=>{props.navigation.navigate('Visit');dispatch(setVisitType("Upcoming"));}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../images/Visit.png')} style={styles.visitimg}></Image>
         <Text style={styles.visitnumber}>{visit}</Text>
@@ -42,7 +55,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
    </Text>
     </TouchableOpacity>
 
-    <View style={styles.plannedvisit}>
+    <TouchableOpacity style={styles.plannedvisit}  onPress={()=>{props.navigation.navigate('Visit');dispatch(setVisitType("Planned"))}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../images/Planned.png')} style={styles.visitimg}></Image>
         <Text style={styles.plannednumber}>{visit}</Text>
@@ -50,9 +63,9 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 <Text style={styles.upcomingvisit}>
    Planned Visits
    </Text>
-    </View>
+    </TouchableOpacity >
 
-    <View style={styles.executedvisit}>
+    <TouchableOpacity style={styles.executedvisit} onPress={()=>{props.navigation.navigate('Visit');dispatch(setVisitType("Executed"))}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../images/Executed.png')} style={styles.visitimg}></Image>
         <Text style={styles.exedcutednumber}>{visit}</Text>
@@ -60,7 +73,7 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
    <Text style={styles.upcomingvisit}>
    Executed Visits
    </Text>
-    </View>
+    </TouchableOpacity>
 
 </View>
 <Product  navigationprops={props} category="Product Catalogue" imagefirst={require('../images/steel.png')} imagesecond={require('../images/rolled.png')} imagefirstinfo="Stainless Steel Products" imagesecondinfo="Cold Rolled Products" text="See All"/>
@@ -69,7 +82,8 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 
   </View>
   
-  <Footer  color="#E6E6E6" navigationprops={props}/>
+   <Footer  color="#E6E6E6" navigationprops={props} PlusClicked={PlusClicked}/>
+   <BottomDrawer Navigationprops={props} ref={BottomDrawerRef}/>
 
     </SafeAreaView>);
 }

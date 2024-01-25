@@ -12,6 +12,12 @@ import NearByCustomer from '../../Components/NearbyCustomer/NearByCustomer';
 import NearbyCustomer from '../../Components/NearbyCustomer/NearByCustomer';
 import Details from '../../Components/CustomerRegistration/Details';
 import BottomDrawer from '../../Components/MainScreen/BottomDrawer/BottomDrawer';
+import Meeting from '../../Components/Meeting/Meeting';
+import ProductCatalog from '../../Components/ProductCatalog/ProductCatalog';
+import VisitPlan from '../../Components/VisitPlan/VisitPlan';
+import CMSPages from '../../Components/CMS/CMS';
+import Message from '../../Components/Message/Message';
+import ViewProfile from '../../Components/ViewCustomerProfile/ViewProfile';
 
 
 
@@ -32,8 +38,12 @@ const Routes = () => {
         <Stack.Screen options={{headerShown: false}} name="IssueEnquiry" component={IssueEnquiry} />
         <Stack.Screen options={{headerShown: false}} name="NearByCustomer" component={NearbyCustomer} />
         <Stack.Screen options={{headerShown: false}} name="Details" component={Details} />
-        <Stack.Screen options={{headerShown: false}} name="BottomDrawer" component={BottomDrawer} />
-       
+        <Stack.Screen options={{headerShown: false}} name="Meeting" component={Meeting} />
+        <Stack.Screen options={{headerShown: false}} name="ProductCatalog" component={ProductCatalog} />
+        <Stack.Screen options={{headerShown: false}} name="VisitPlan" component={VisitPlan} />
+        <Stack.Screen options={{headerShown: false}} name="CMS" component={CMSPages} />
+        <Stack.Screen options={{headerShown: false}} name="Message" component={Message} />
+        <Stack.Screen options={{headerShown: false}} name="ViewCustomer" component={ViewProfile} />
       </Stack.Navigator>
       
     </NavigationContainer>

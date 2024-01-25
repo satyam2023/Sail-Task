@@ -1,12 +1,16 @@
 import React, { useRef, useState } from "react";
 import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import InputText from "../../InputTextInsideMain";
-import DatePicker from "react-native-date-picker";
+
 import DropDown from "../../DropDown/DropDown";
 import { CustomerContactDetails, CustomerMode, CustomerStatus, CustomerType, SelectDepartment, SelectRegion } from "../dataForDropDown/data";
 import Issue from "./Issue";
-import Footer from "../../CustomerRegistration/Footer";
-const AddUnplannedVisit: React.FC<{}> = () => {
+import Footer from "./Footer";
+interface AddProps{
+    navigationProps:any,
+    setVisitSuccess:Function
+}
+const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}:AddProps) => {
 
     const [date, setDate] = useState(new Date());
     console.log("selected date", date)
@@ -24,11 +28,16 @@ const AddUnplannedVisit: React.FC<{}> = () => {
     }
 
     function setReason(param:boolean){
-        setreason(param);
+       setVisitSuccess(param);
+    }
+
+    function setSuccess(param:boolean){
+        setVisitSuccess(param)
+         
     }
     return (
 <>
-        <ScrollView style={{ marginBottom: 240 }}>
+        <ScrollView style={{ marginBottom: 120 }}>
             <DropDown data={CustomerType} heading="Customer Type" setReason={setReason} />
             <InputText
                 placeholder="Customer Code"
@@ -116,7 +125,7 @@ const AddUnplannedVisit: React.FC<{}> = () => {
             <Text style={{ fontWeight: '500', fontSize: 14, lineHeight: 16, width: 146, color: '#666666', marginTop: 16, marginLeft: 21 }}>
                 Upload Visiting Card
             </Text>
-            <TouchableOpacity style={{ width: 353, height: 82, borderWidth: 1, borderColor: '#233972', borderStyle: 'dashed', borderRadius: 33, marginTop: 19, marginLeft: 21, backgroundColor: '#E9EBF1',marginBottom:20 }}>
+            <TouchableOpacity style={{ width: 353, height: 82, borderWidth: 1, borderColor: '#233972', borderStyle: 'dashed', borderRadius: 33, marginTop: 19, marginLeft: 21, backgroundColor: '#E9EBF1',marginBottom:130 }}>
                 <View style={{ height: 34, marginTop: 27 }}>
                     <Text style={{ alignSelf: 'center', fontWeight: '500', fontSize: 16, color: '#666666', lineHeight: 16 }}>
                         +  Upload Visiting Card
@@ -124,7 +133,7 @@ const AddUnplannedVisit: React.FC<{}> = () => {
                 </View>
             </TouchableOpacity>
         </ScrollView>
-        <Footer/>
+        <Footer setSuccess={setSuccess}/>
 
         </>
         

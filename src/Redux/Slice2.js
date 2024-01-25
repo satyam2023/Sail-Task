@@ -6,6 +6,7 @@ const ButtonSlice = createSlice({
     FirstScreenButtonStatus:false,
     SecondScreenButtonStatus:false,
     ThirdScreenButtonStatus:false,
+    VisitType:"Upcoming",
   },
   reducers: {
    setfirstscreen:(state,action)=>{
@@ -18,11 +19,14 @@ const ButtonSlice = createSlice({
    },
    setThirdscreen:(state,action)=>{
     state.ThirdScreenButtonStatus=action.payload
+   },
+   setVisitType:(state,action)=>{
+    state.VisitType=action.payload
    }
   },
 });
 
-export const {setfirstscreen,setSecondscreen,setThirdscreen} = ButtonSlice.actions;
+export const {setfirstscreen,setSecondscreen,setThirdscreen,setVisitType} = ButtonSlice.actions;
 
 
 //export const isLog = (state) =>  state.user.isLog;

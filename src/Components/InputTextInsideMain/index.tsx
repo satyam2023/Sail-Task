@@ -21,7 +21,7 @@ const InputText: FC<InputProps> = (props): JSX.Element => {
        <View>
         {focus?
             <View style={{position:'absolute',height:15,top:21,zIndex:2,left:44}}>
-                <Text style={{fontWeight:'400',fontSize:12,color:'#110F2480',}}>
+                <Text style={{fontWeight:'400',fontSize:12,color:'#110F2480'}}>
                     {props.placeholder}
                 </Text>
             </View>:null}

@@ -27,10 +27,12 @@ notheading:{
 },
 
 plannedheading:{
+    width:120,
     marginLeft:16,
     backgroundColor:'#EEF4FF'
 },
 secondheading:{
+    width:120,
     marginLeft:16,
     backgroundColor:'#233972'
 },

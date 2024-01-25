@@ -43,6 +43,9 @@ import IssueEnquiry from './src/Components/Issue Enquiry/IssueEnquiry';
 import Registration from './src/Components/CustomerRegistration/Header';
 import Details from './src/Components/CustomerRegistration/Details';
 import Meeting from './src/Components/Meeting/Meeting';
+import ProductCatalog from './src/Components/ProductCatalog/ProductCatalog';
+import DateSlector from './src/Components/Date/Date';
+import VisitPlan from './src/Components/VisitPlan/VisitPlan';
 
 
 type SectionProps = PropsWithChildren<{
@@ -55,7 +58,7 @@ function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
-   <Routes/>
+    <Routes/>
     </Provider>
    
   );

@@ -5,13 +5,18 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Image } from "react-native";
 import CommonDropDown from "./CommonDropDown";
 import { CustomerSegment, CustomerStatus, CustomerSubSegment, CustomerSubType, CustomerType } from "./Data";
-const CustomerDetails: React.FC<{}> = () => {
+import Header from "./Header";
+interface CustomerProps{
+    props:any
+}
+const CustomerDetails: React.FC<CustomerProps> = ({props}:CustomerProps) => {
     const customerdetails = {
         CustomerCode: useRef(''),
         CompanyName: useRef(''),
     }
     return (
-        <ScrollView style={{ marginBottom: 240 }}>
+        <ScrollView style={{ marginBottom:130}}>
+            <Header navigationProps={props} heading="Enter Customer Details" CurrentScreen={1} topheading="Create Customer Profile"/>
             <InputText
                 placeholder="Enter Customer Code"
                 ChangeText={(text: any) => {
@@ -20,7 +25,6 @@ const CustomerDetails: React.FC<{}> = () => {
                 }
                 keyboardType="numeric"
                 secureText={false}
-
             />
             <InputText
                 placeholder="Enter Company Name"
@@ -47,7 +51,6 @@ const CustomerDetails: React.FC<{}> = () => {
                 }
                 keyboardType="numeric"
                 secureText={false}
-
             />
 
             <InputText
@@ -58,7 +61,6 @@ const CustomerDetails: React.FC<{}> = () => {
                 }
                 keyboardType="numeric"
                 secureText={false}
-
             />
             <InputText
                 placeholder="Website Link"
@@ -68,7 +70,6 @@ const CustomerDetails: React.FC<{}> = () => {
                 }
                 keyboardType="numeric"
                 secureText={false}
-
             />
 
             <InputText
@@ -79,7 +80,6 @@ const CustomerDetails: React.FC<{}> = () => {
                 }
                 keyboardType="default"
                 secureText={false}
-
             />
             <InputText
                 placeholder="Add Tag Name to Selected Location"
@@ -89,7 +89,6 @@ const CustomerDetails: React.FC<{}> = () => {
                 }
                 keyboardType="numeric"
                 secureText={false}
-
             />
 
         </ScrollView>

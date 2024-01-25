@@ -9,20 +9,44 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
- 
-const Footer:React.FC<{}>=()=>{
-    
+interface FooterProps{
+  CurrentScreen:number
+  setScreen:Function
+  FooterStatus:any
+  FooterExecuted:any
+}
+const Footer:React.FC<FooterProps>=({CurrentScreen,setScreen,FooterStatus,FooterExecuted}:FooterProps)=>{
+  const [saveBtnStatus,setSaveBtnStatus]=useState<boolean>(false);
+   function handleClick(){
+    if(CurrentScreen==1)
+   { setScreen(2)}
+   else if(CurrentScreen==2 && saveBtnStatus)
+{ setScreen(3)}
+
+
+
+    if(FooterStatus=="Representative")
+    {FooterExecuted();
+      setSaveBtnStatus(true);
+    }
+  
+  }
+   
     
     return(
+      
         <View 
-        style={Styles.FooterContainer}>
-            <View style={{height:6,marginTop:0,backgroundColor:'#E8E8E8',width:'100%'}} />
+         style={Styles.FooterContainer}>
+            <View style={Styles.BottomtabStatusbox} >
+              <View style={[Styles.BottomtabStatusline,CurrentScreen==2?{width:'67%'}:{},CurrentScreen==3?{width:'100%'}:{}]}/>
+                
+            </View>
             <View style={{flexDirection:'row'}}>
-       <TouchableOpacity style={Styles.btn}>
+      {FooterStatus!="Representative"?<TouchableOpacity style={Styles.btn}>
         <Text style={{color:'#233972',alignSelf:'center',width:58,height:20,fontWeight:'500',fontSize:16,lineHeight:20,marginTop:17}}>Cancel</Text>
-       </TouchableOpacity> 
-       <TouchableOpacity style={Styles.probtn}>
-         <Text style={{height:20,width:127,lineHeight:20,color:'#110F2480',fontWeight:'500',fontSize:16,alignSelf:'center',marginTop:17}}>Save & Proceed</Text>
+       </TouchableOpacity>:null} 
+      <TouchableOpacity style={[FooterStatus=="Representative"?Styles.probtno:Styles.probtn,saveBtnStatus?{backgroundColor:'#233972'}:{}]}  onPress={handleClick}>
+         <Text style={[Styles.ProceedBtn,FooterStatus=="Representative"?{width:243}:{},saveBtnStatus?{color:'#FFFFFF'}:{}]}>{FooterStatus!="Representative"?"Save & Proceed":"Add Customer Representative"}</Text>
        </TouchableOpacity> 
        </View>
         </View>

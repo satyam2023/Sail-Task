@@ -11,6 +11,14 @@ const userSlice = createSlice({
     token:null,
 
     userdata:[
+      {
+        userName: null,
+        gender:null,
+        phonenumber:"9999999999",
+        email:null,
+        password: "Satyam@1",
+        token:null,
+      }
     
     ],
     isLog :false,

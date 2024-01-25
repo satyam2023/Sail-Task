@@ -14,7 +14,12 @@ interface ProductProps {
 }
 
 const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imagefirstinfo,imagesecondinfo,navigationprops}:ProductProps)=>{
-
+function controlnavigation(){
+    if(text=="See All")
+    {navigationprops.navigation.navigate('ProductCatalog');}
+    else if(text=="View All")
+    { navigationprops.navigation.navigate('Enquiry')}
+}
     return (
        
         <View style={styles.box}>
@@ -25,7 +30,7 @@ const Product:React.FC<ProductProps>=({category,imagefirst,imagesecond,text,imag
                 {category}
             </Text>
             <TouchableOpacity style={{position:'absolute',left:326}} 
-            onPress={()=>{navigationprops.navigation.navigate('NearByCustomer')}}
+            onPress={controlnavigation}
             >
             <Text style={{marginTop:16,fontWeight:"600",fontSize:14,lineHeight:14,color:'#110F24',}}>
                 {text}
