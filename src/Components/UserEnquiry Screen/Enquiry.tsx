@@ -6,7 +6,10 @@ import Footer from "../MainFooter/Footer";
 import styles from "./Style";
 import {LocationData,DataOfPerson} from "./LocationData";
 import { HandledEventPhase } from "react-native-windows";
-const Enquiry:React.FC<{}>=(props:any)=>{
+interface EnquiryProps{
+    props:any
+}
+const Enquiry:React.FC<EnquiryProps>=({props}:EnquiryProps)=>{
     const Data=[{text:"User Enquiry"},{text:"Issue Enquiry"},{text:"Nearby Customers"}];
     const [CurrentLocation,setCurrentLocation]=useState<String>("Select Location");
     const [locationStatus,setLocationStatus]=useState<boolean>(false);
@@ -32,26 +35,26 @@ const Enquiry:React.FC<{}>=(props:any)=>{
         setSearchBtnStatus(true)
     },[CurrentLocation,FocusStatus])
 
-   function renderItem(item:any){ 
-    function handlenavigation(){
+//    function renderItem(item:any){ 
+//     function handlenavigation(){
             
-        if(item.item.text=="User Enquiry"){
+//         if(item.item.text=="User Enquiry"){
            
-            props.navigation.navigate('Enquiry')
-        }
-        else if(item.item.text=="Issue Enquiry"){
-            props.navigation.navigate('IssueEnquiry')
-        }
-        else if(item.item.text=="Nearby Customers"){
-            props.navigation.navigate('NearByCustomer');
-        }
+//             props.navigation.navigate('Enquiry')
+//         }
+//         else if(item.item.text=="Issue Enquiry"){
+//             props.navigation.navigate('IssueEnquiry')
+//         }
+//         else if(item.item.text=="Nearby Customers"){
+//             props.navigation.navigate('NearByCustomer');
+//         }
         
-    } 
-    return(
-        <TouchableOpacity onPress={handlenavigation}> 
-        <CommonButton text={item.item.text}/>
-        </TouchableOpacity>);
-   }
+//     } 
+//     return(
+//         <TouchableOpacity onPress={handlenavigation}> 
+//         <CommonButton text={item.item.text} />
+//         </TouchableOpacity>);
+//    }
 
    function RenderItem(item:any){
     return(  
@@ -85,16 +88,6 @@ const Enquiry:React.FC<{}>=(props:any)=>{
    
     return(
         <SafeAreaView >
-            <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
-            <View style={{height:60,width:'100%',backgroundColor:'#233972',flexDirection:'row'}}>
-             <TouchableOpacity style={{marginLeft:21,marginTop:18}} onPress={()=>props.navigation.navigate('MainScreen')}>
-                 <Image source={require('../images/Arrow.png')} style={{tintColor:'#FFFFFF',width:9,height:15,transform: [{ rotate: '180deg' }],}}/>
-                 </TouchableOpacity> 
-                <Text style={{marginTop:13,color:'#FFFFFF',marginLeft:16,width:62,height:36,fontWeight:"600",fontSize:16}}>Enquiry</Text>
-            </View>
-            <FlatList data={Data} renderItem={renderItem} 
-            horizontal={true} showsHorizontalScrollIndicator={false}
-            style={{marginLeft:20}} />
            <View style={styles.TextInput}>
                { FocusStatus ?         
                 <Text style={{color:'#110F2480',position:'absolute',top:9,left:27,fontWeight:'400',fontSize:12,height:15,lineHeight:12

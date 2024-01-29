@@ -36,7 +36,9 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
     </View>
     <TouchableOpacity onPress={()=>{props.navigation.navigate('Message')}}>
 <Image source={require('../images/mail.png')} style={{marginTop:21,marginLeft:115}}/></TouchableOpacity>
-<Image source={require('../images/notification.png')} style={{marginTop:21,marginLeft:16}}></Image>
+<TouchableOpacity onPress={()=>props.navigation.navigate('Notification')}>
+<Image source={require('../images/notification.png')} style={{marginTop:21,marginLeft:16}}/>
+</TouchableOpacity>
 <View style={styles.circle}>
     <Text style={{alignSelf:'center',color:'#FFFFFF',height:15,width:19,fontWeight:"500",fontSize:14,lineHeight:14,marginVertical:11,marginHorizontal:18,}}>
   SV

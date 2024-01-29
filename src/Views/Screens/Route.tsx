@@ -18,6 +18,8 @@ import VisitPlan from '../../Components/VisitPlan/VisitPlan';
 import CMSPages from '../../Components/CMS/CMS';
 import Message from '../../Components/Message/Message';
 import ViewProfile from '../../Components/ViewCustomerProfile/ViewProfile';
+import MainEnquiry from '../../Components/MainEnquiry/MainEnquiry';
+import Notification from '../../Components/Notification/Notification';
 
 
 
@@ -34,9 +36,10 @@ const Routes = () => {
         <Stack.Screen options={{headerShown: false}} name="SignIn" component={SignIn} />
         <Stack.Screen options={{headerShown: false}} name="MainScreen" component={MainScreen} />
         <Stack.Screen options={{headerShown: false}} name="Visit" component={Visit} />
-        <Stack.Screen options={{headerShown: false}} name="Enquiry" component={Enquiry} />
+        {/* <Stack.Screen options={{headerShown: false}} name="Enquiry" component={Enquiry} />
         <Stack.Screen options={{headerShown: false}} name="IssueEnquiry" component={IssueEnquiry} />
-        <Stack.Screen options={{headerShown: false}} name="NearByCustomer" component={NearbyCustomer} />
+        <Stack.Screen options={{headerShown: false}} name="NearByCustomer" component={NearbyCustomer} /> */}
+          <Stack.Screen options={{headerShown: false}} name="MainEnquiry" component={MainEnquiry} />
         <Stack.Screen options={{headerShown: false}} name="Details" component={Details} />
         <Stack.Screen options={{headerShown: false}} name="Meeting" component={Meeting} />
         <Stack.Screen options={{headerShown: false}} name="ProductCatalog" component={ProductCatalog} />
@@ -44,6 +47,7 @@ const Routes = () => {
         <Stack.Screen options={{headerShown: false}} name="CMS" component={CMSPages} />
         <Stack.Screen options={{headerShown: false}} name="Message" component={Message} />
         <Stack.Screen options={{headerShown: false}} name="ViewCustomer" component={ViewProfile} />
+        <Stack.Screen options={{headerShown: false}} name="Notification" component={Notification} />
       </Stack.Navigator>
       
     </NavigationContainer>

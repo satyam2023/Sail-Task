@@ -46,6 +46,7 @@ import Meeting from './src/Components/Meeting/Meeting';
 import ProductCatalog from './src/Components/ProductCatalog/ProductCatalog';
 import DateSlector from './src/Components/Date/Date';
 import VisitPlan from './src/Components/VisitPlan/VisitPlan';
+import MainEnquiry from './src/Components/MainEnquiry/MainEnquiry';
 
 
 type SectionProps = PropsWithChildren<{

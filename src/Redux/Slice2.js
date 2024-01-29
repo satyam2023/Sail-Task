@@ -7,6 +7,9 @@ const ButtonSlice = createSlice({
     SecondScreenButtonStatus:false,
     ThirdScreenButtonStatus:false,
     VisitType:"Upcoming",
+    EnquiryScreen:1,
+    CustomerProfileButton:false,
+    CompetitorButtonStatus:false,
   },
   reducers: {
    setfirstscreen:(state,action)=>{
@@ -22,11 +25,22 @@ const ButtonSlice = createSlice({
    },
    setVisitType:(state,action)=>{
     state.VisitType=action.payload
+   },
+   setEnquiryScreen:(state,action)=>{
+    console.log("REdux Screen::",action.payload)
+
+     state.EnquiryScreen=action.payload
+   },
+   setCustomerProfileButton:(state,action)=>{
+    state.CustomerProfileButton=action.payload
+   },
+   setCompetitorButtonStatus:(state,action)=>{
+    state.CompetitorButtonStatus=action.payload
    }
   },
 });
 
-export const {setfirstscreen,setSecondscreen,setThirdscreen,setVisitType} = ButtonSlice.actions;
+export const {setCompetitorButtonStatus,setfirstscreen,setSecondscreen,setThirdscreen,setVisitType,setEnquiryScreen,setCustomerProfileButton} = ButtonSlice.actions;
 
 
 //export const isLog = (state) =>  state.user.isLog;

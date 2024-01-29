@@ -5,7 +5,10 @@ import CommonButton from "./CommonButton";
 import styles from "./Styles";
 import { LocationData, DataOfIssue } from "./IssueData";
 import DetailsCard from "./DetailsCard";
-const IssueEnquiry: React.FC<{}> = (props: any) => {
+interface IssueEnquiryProps{
+    props:any
+}
+const IssueEnquiry: React.FC<IssueEnquiryProps> = ({props}: IssueEnquiryProps) => {
     const Data = [{ text: "User Enquiry" }, { text: "Issue Enquiry" }, { text: "Nearby Customers" }];
     const [CurrentLocation, setCurrentLocation] = useState<String>("Select Branch Location");
     const [locationStatus, setLocationStatus] = useState<boolean>(false);
@@ -89,17 +92,7 @@ const IssueEnquiry: React.FC<{}> = (props: any) => {
 
     return (
         <SafeAreaView >
-            <StatusBar backgroundColor={'#233972'} barStyle={'light-content'} />
-            <View style={{ height: 60, width: '100%', backgroundColor: '#233972', flexDirection: 'row' }}>
-                <TouchableOpacity style={{ marginLeft: 21, marginTop: 18 }} onPress={() => props.navigation.navigate('MainScreen')}>
-                    <Image source={require('../images/Arrow.png')} style={{ tintColor: '#FFFFFF', width: 9, height: 15, transform: [{ rotate: '180deg' }], }} />
-                </TouchableOpacity>
-                <Text style={{ marginTop: 13, color: '#FFFFFF', marginLeft: 16, width: 62, height: 36, fontWeight: "600", fontSize: 16 }}>Enquiry</Text>
-            </View>
-            <FlatList data={Data} renderItem={renderItem}
-                horizontal={true} showsHorizontalScrollIndicator={false}
-                style={{ marginLeft: 20 }} />
-
+            
                 <View style={{flexDirection:'row',marginTop:36,marginLeft:20,}}>
                     <TouchableOpacity style={{height:14}}>
                           <Text style={{fontWeight:"500",fontSize:14,lineHeight:14,color:'#233972',marginLeft:46}}>

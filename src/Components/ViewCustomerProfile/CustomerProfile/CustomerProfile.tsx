@@ -13,7 +13,7 @@ const CustomerProfile:React.FC<CustomerProfileProps>=({navigationProps}:Customer
     const CustomerDetails=useRef('');
     return(
         <View >
-            <MainHeader navigationProps={navigationProps} heading={"CustomerProfile"}/>
+            <MainHeader navigationProps={navigationProps} heading={"Customer Profiles"}/>
             <View style={{height:28,backgroundColor:'#233972',zIndex:-5}}/>
             <View style={styles.floatingTextInput}>
                 <InputText
