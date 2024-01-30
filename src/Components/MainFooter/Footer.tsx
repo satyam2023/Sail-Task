@@ -10,9 +10,8 @@ interface Footerprops{
 }
 const Footer:FC<Footerprops>=({color,navigationprops,}:Footerprops)=>{
   const BottomDrawerRef= useRef<any>();
+console.log("navigation screen name in main screen",navigationprops.route.name)
   function PlusClicked() {
-    console.log("Bottom PLus Clicked Succesful:::")
-    console.log("abiut ref",BottomDrawerRef.current)
     BottomDrawerRef.current.handleClicked();
    
 }
@@ -21,10 +20,14 @@ const Footer:FC<Footerprops>=({color,navigationprops,}:Footerprops)=>{
        <View style={{height:96,width:'42%',backgroundColor:'#FFFFFF',position:'absolute',borderTopRightRadius:30,top:600}}>
        <View style={{flexDirection:'row'}}>
         <TouchableOpacity>
-         <Image source={require('../images/Home.png')} style={{marginLeft:35,marginTop:39}}/>
+        {/* { navigationprops.route.name=="MainScreen"? */}
+        <Image source={require('../images/HomeDull.png')} style={{marginLeft:35,marginTop:39}}/>
+              {/* : <Image source={require('../images/HomeDull.png')} style={{marginLeft:35,marginTop:39}}/>   } */}
         </TouchableOpacity> 
         <TouchableOpacity onPress={()=>{navigationprops.navigation.navigate('ProductCatalog')}}>
-          <Image source={require('../images/shop.png')} style={{marginLeft:56,marginTop:39}} />
+        {/* { navigationprops.route.name=="ProductCatalog"?  */}
+        <Image source={require('../images/shop.png')} style={{marginLeft:56,marginTop:39}} />
+       {/* :<Image source={require('../images/shopClicked.png')} style={{marginLeft:56,marginTop:39}} />} */}
         </TouchableOpacity>
      </View>
       </View>
@@ -33,11 +36,16 @@ const Footer:FC<Footerprops>=({color,navigationprops,}:Footerprops)=>{
         
       <View style={{flexDirection:'row'}}>
         <TouchableOpacity onPress={()=>{navigationprops.navigation.navigate('MainEnquiry')}}>
-         <Image source={require('../images/profile2user.png')} style={{marginLeft:35,marginTop:39}}/>
-         
+            
+        {/* { navigationprops.route.name=="MainEnquiry"?   */}
+        <Image source={require('../images/profile2user.png')} style={{marginLeft:35,marginTop:39}} />
+         {/* :<Image source={require('../images/profile2userClicked.png')} style={{marginLeft:35,marginTop:39}} />} */}
          </TouchableOpacity>
          <TouchableOpacity onPress={()=>{navigationprops.navigation.navigate('CMS')}}>
-           <Image source={require('../images/setting2.png')} style={{marginLeft:56,marginTop:39}}/>
+          
+         {/* { navigationprops.route.name=="CMS"?  */}
+         <Image source={require('../images/setting2.png')} style={{marginLeft:56,marginTop:39}}/>
+           {/* :  <Image source={require('../images/setting2Clicked.png')} style={{marginLeft:56,marginTop:39}}/>} */}
        </TouchableOpacity>
           </View>
       </View>

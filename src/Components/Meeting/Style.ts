@@ -25,6 +25,17 @@ notheading:{
     marginTop:32,
     marginLeft:10,
 },
+inputbox:{
+        
+    width:353,
+    height:56,
+    borderRadius:33,
+    marginLeft:20,
+    backgroundColor:'#FFFFFF',
+    flexDirection:'row',
+    marginTop:12,
+    // position:'absolute'  
+ },
 
 plannedheading:{
     marginLeft:16,

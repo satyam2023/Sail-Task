@@ -40,7 +40,7 @@ function handleClick(){
         </TouchableOpacity>
 
 <TouchableOpacity style={[Styles.addRepresentativeBtn,{backgroundColor:'#F9F9FC'}]} onPress={()=>{setCustomerRepresentative(false); SetFooter("Representative")}}>
-          <Image style={[{marginLeft:24,marginTop:21,}]} source={require('../images/+.png')}/>
+          <Image style={[{marginLeft:24,marginTop:17,}]} source={require('../images/add.png')}/>
         <Text style={Styles.addBtnText}> Add Customer Representative
         </Text>
         </TouchableOpacity>

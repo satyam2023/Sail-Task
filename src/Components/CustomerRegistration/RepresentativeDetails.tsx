@@ -3,8 +3,8 @@ import Styles from "./Style";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Header from "./Header";
 //import InputText from "../InputTextInsideMain";
-import InputText from "../InputText/InputText";
-
+// import InputText from "../InputText/InputText";
+import InputText from "../InputTextForMainScreen/InputText";
 interface RepProps{
     NavigationProps:any
     SetFooter:Function

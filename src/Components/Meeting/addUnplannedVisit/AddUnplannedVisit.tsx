@@ -1,19 +1,26 @@
 import React, { useRef, useState } from "react";
-import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import InputText from "../../InputTextInsideMain";
-
+import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
+// import InputText from "../../InputTextInsideMain";
+import InputText from "../../InputTextForMainScreen/InputText";
 import DropDown from "../../DropDown/DropDown";
 import { CustomerContactDetails, CustomerMode, CustomerStatus, CustomerType, SelectDepartment, SelectRegion } from "../dataForDropDown/data";
 import Issue from "./Issue";
 import Footer from "./Footer";
+import styles from "../Style";
+import DatePicker from "react-native-date-picker";
+import moment from "moment";
 interface AddProps{
     navigationProps:any,
     setVisitSuccess:Function
 }
 const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}:AddProps) => {
 
-    const [date, setDate] = useState(new Date());
-    console.log("selected date", date)
+   const [opentime,setopentime]=useState(false);
+   const [time, setTime] = useState(new Date())
+   const [timeData, setTimeData] = useState("Visit Time")
+    const [open, setOpen] = useState(false)
+    const [date, setDate] = useState(new Date())
+    const [dateData, setDateData] = useState("Visit Date")
     const [reason,setreason]=useState<boolean>(false);
     const details = {
         customerCode: useRef(''),
@@ -37,8 +44,9 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
     }
     return (
 <>
-        <ScrollView style={{ marginBottom: 120 }}>
+        <ScrollView style={{ marginBottom: 120,marginLeft:4 }}>
             <DropDown data={CustomerType} heading="Customer Type" setReason={setReason} />
+           <View style={styles.inputbox}>
             <InputText
                 placeholder="Customer Code"
                 ChangeText={(text: any) => {
@@ -47,8 +55,11 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
+            </View>
             <DropDown data={CustomerType} heading="Status of Customer" setReason={setReason} />
+            <View style={styles.inputbox}>
             <InputText
                 placeholder="Enter Company Name"
                 ChangeText={(text: any) => {
@@ -57,8 +68,10 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
-
+            </View>
+            <View style={styles.inputbox}>
             <InputText
                 placeholder="Enter Person Name"
                 ChangeText={(text: any) => {
@@ -67,7 +80,10 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
+            </View>
+            <View style={styles.inputbox}>
             <InputText
                 placeholder="Enter Designation"
                 ChangeText={(text: any) => {
@@ -76,8 +92,10 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
-
+</View>
+<View style={styles.inputbox}>
             <InputText
                 placeholder="Enter Address"
                 ChangeText={(text: any) => {
@@ -86,7 +104,10 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
+            </View>
+            <View style={styles.inputbox}>
             <InputText
                 placeholder="Enter Whatsapp Number"
                 ChangeText={(text: any) => {
@@ -95,8 +116,11 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
+            </View>
             <DropDown data={CustomerType} heading="Select Departement" setReason={setReason}/>
+            <View style={styles.inputbox}>
             <InputText
                 placeholder="Enter Name Followed by 10 digits number"
                 ChangeText={(text: any) => {
@@ -105,18 +129,71 @@ const AddUnplannedVisit: React.FC<AddProps> = ({navigationProps,setVisitSuccess}
                 }
                 keyboardType="default"
                 secureText={false}
+                maxLength={20}
             />
+            </View>
+            <TouchableOpacity style={{ height: 56, width: 353, backgroundColor: '#FFFFFF', marginLeft: 20, marginTop: 16, borderRadius: 33, flexDirection: 'row' }} onPress={() => { setOpen(true) }}>
+                     <Image source={require('../../images/Calender.png')} style={{ marginLeft: 16, marginTop: 16 }} />
+                     <Text style={[{ marginTop: 16, marginLeft: 16, color: '#110F2480', fontWeight: '400', fontSize: 14 }, dateData != "Visit Date" ? { color: '#110F24' } : {}]}>{dateData}</Text>
+                     <DatePicker
+                        modal
+                        open={open}
+                        date={date}
+                        mode="date"
+                        onConfirm={(date:any) => {
+                           setOpen(false)
+                           setDate(date)
+                           // setDateData(moment(date).format("DMMMM YYYY"));
+                           setDateData(date.toLocaleDateString())
+                        }}
+                        onCancel={() => {
+                           setOpen(false);
+                        }}
+                        androidVariant="iosClone"
+                        dividerHeight={10}
+                     //theme="dark"
+
+                     />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={{ height: 56, width: 353, backgroundColor: '#FFFFFF', marginLeft: 20, marginTop: 16, borderRadius: 33, flexDirection: 'row' }} onPress={() => { setopentime(true) }}>
+                     <Image source={require('../../images/Calender.png')} style={{ marginLeft: 16, marginTop: 16 }} />
+                     <Text style={[{ marginTop: 16, marginLeft: 16, color: '#110F2480', fontWeight: '400', fontSize: 14 }, timeData != "Visit Time" ? { color: '#110F24' } : {}]}>{timeData}</Text>
+                     <DatePicker
+                        modal
+                        open={opentime}
+                        date={time}
+                        mode="time"
+                        onConfirm={(date:any) => {
+                           setopentime(false);
+                           setTime(date)
+                           // setDateData(moment(date).format("DMMMM YYYY"));
+                           setTimeData(moment(date).utcOffset('+05:30').format(' hh:mm:ss a'))
+                        }}
+                        onCancel={() => {
+                           setopentime(false);
+                        }}
+                        androidVariant="iosClone"
+                        dividerHeight={10}
+                     //theme="dark"
+
+                     />
+                  </TouchableOpacity>
 
             <DropDown data={CustomerType} heading="Select Reason"  setReason={setReason}/>
             {
-                reason?<InputText
+                reason?
+                <View style={styles.inputbox}>
+                <InputText
                 placeholder="Enter Reason"
                 ChangeText={(text: any) => {
                     details.reason.current = text;
                 }
                 }
                 keyboardType="default"
-                secureText={false}/>:null
+                secureText={false}
+                maxLength={20}/>
+                </View>:null
             }
 
             <Issue/>

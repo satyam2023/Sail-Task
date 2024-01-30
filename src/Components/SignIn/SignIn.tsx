@@ -5,6 +5,8 @@ import styles from "./Style";
 import InputText from "../InputText/InputText";
 import { setLogIn } from "../../Redux/Slice";
 import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "react-native-windows";
+import ModalAlert from "./ModalAlert";
 const sign = require('jwt-encode');
 
 
@@ -13,6 +15,8 @@ const SignIn:React.FC<{}>=(props:any)=>{
     const[passeye,setpasseye]=useState<boolean>(true);
     const[passstatus,setpassstatus]=useState(true);
     const[remembertick,setremembertick]=useState(true);
+    const [visibilityStatus,setVisibilitystatus]=useState<boolean>(false);
+    const [signinColor,setSigninColor]=useState<boolean>(false);
     const dispatch=useDispatch();
     const details = {
         passOne:useRef(''),
@@ -21,33 +25,50 @@ const SignIn:React.FC<{}>=(props:any)=>{
 
 const isLog=useSelector((state:any)=>state.user.isLog);
 
-   function handlesignin(){
+    function handlesignin(){
 
     const secret = 'secret';
     const data = {
       number:details.phoneNumber.current,
      password:details.passOne.current,
-      //iat: 1516239022
     };
     const jwt = sign(data, secret);
     console.log("token inside signin:",jwt);
     
        
-        dispatch(setLogIn(
+         dispatch(  setLogIn(
             {
                 password:details.passOne.current,
                 phonenumber:details.phoneNumber.current,
             },
         ))
-     // console.log("isLog sttus:",isLog)
-       
+    
+
+     if(isLog){
+        props.navigation.navigate('MainScreen');
+     }
     }
 
     useEffect(()=>{
         if(isLog){
             props.navigation.navigate('MainScreen');
           }
-    },[isLog])
+    },[isLog]);
+
+    
+
+    function signincolor(){
+            if(details.phoneNumber.current.length==10){
+                setSigninColor(true);
+            }
+            else {
+                setSigninColor(false);
+            }
+    }
+
+    function SetModalScreen(param:boolean){
+        setVisibilitystatus(param);
+    }
   
     return(
         <SafeAreaView style={{backgroundColor:'#FFFFFF',height:'100%'}}>
@@ -60,7 +81,7 @@ const isLog=useSelector((state:any)=>state.user.isLog);
                     placeholder="Your Unique Personal No."
                     ChangeText={(text: any) => {
                         details.phoneNumber.current = text;
-                       
+                        signincolor();
                     }}
                     keyboardType="numeric"
                     secureText={false}
@@ -96,8 +117,8 @@ const isLog=useSelector((state:any)=>state.user.isLog);
                </TouchableOpacity>
                  
             </View>
-            <TouchableOpacity style={styles.signbtn} onPress={handlesignin}>
-                <Text style={styles.txtofSign}>Sign In</Text>
+            <TouchableOpacity style={[styles.signbtn,signinColor?{backgroundColor:'#233972'}:{}]} onPress={handlesignin}>
+                <Text style={[styles.txtofSign,signinColor?{color:'#FFFFFF'}:{}]}>Sign In</Text>
             </TouchableOpacity >
             <View style={{width:236,marginTop:16,alignSelf:'center',flexDirection:'row'}}>
                  <Text style={{fontWeight:'400',fontSize:14,
@@ -115,15 +136,12 @@ const isLog=useSelector((state:any)=>state.user.isLog);
            <TouchableOpacity style={styles.authbtn}>
             <Image source={require('../images/fingerscan.png')} style={{marginLeft:16,}}/>
             <Text style={styles.finger}>Sign in with Fingerprint</Text>
-            
-           
            </TouchableOpacity>
            <TouchableOpacity style={styles.authbtn}>
             <Image source={require('../images/facescan.png')} style={{marginLeft:16,}}/>
             <Text style={styles.finger}>Sign in with Face Recognition</Text>
-            
-           
            </TouchableOpacity>
+           <ModalAlert visibilityStatus={visibilityStatus} SetModalScreen={SetModalScreen}/>
         </SafeAreaView>
     );
 

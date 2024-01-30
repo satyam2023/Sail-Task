@@ -17,7 +17,7 @@ const Meeting:React.FC<{}>=(props:any)=>{
     console.log("success status::",SuccessStatus)
     return(
         <>
-        {!SuccessStatus?<SafeAreaView style={{}}>
+        {!SuccessStatus?<SafeAreaView style={{backgroundColor:'#F9F9FC'}}>
         <Status/>
         
        <MainHeader navigationProps={props} heading="Create Meeting Details"/>

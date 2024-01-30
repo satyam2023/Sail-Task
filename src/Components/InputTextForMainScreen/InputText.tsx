@@ -31,7 +31,7 @@ const InputText: FC<InputProps> = (props): JSX.Element => {
         <>
         { float==true &&
             <View style={{marginBottom:10,}}>
-                <Text style={{color:'#00000080',position:'absolute',top:9,left:28,fontWeight:'400',fontSize:12,lineHeight:15,//left 24 not aliging Properly
+                <Text style={{color:'#00000080',position:'absolute',top:9,left:24,fontWeight:'400',fontSize:12,lineHeight:15,//left 24 not aliging Properly
         }}>
                     {props.placeholder}</Text>
             </View>

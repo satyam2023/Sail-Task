@@ -15,7 +15,7 @@ const SettingHeader:React.FC<SettingHeaderProps> = ({props}:SettingHeaderProps) 
         Settings
        </Text>
        <Image source={require('../images/logout.png')} style={{marginTop:21,marginLeft:187,height:20,width:20}}/>
-      <TouchableOpacity onPress={()=>{props.navigation.navigate('MainScreen')}}>
+      <TouchableOpacity onPress={()=>{props.navigation.navigate('SignIn')}}>
        <Text style={{marginTop:19,color:'#FFFFFF',marginLeft:6,width:"auto",height:36,fontWeight:"600",fontSize:16}}>
         Logout
        </Text>

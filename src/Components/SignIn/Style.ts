@@ -10,6 +10,15 @@ signinText:{
     marginTop:35,
     
 },
+signinTexT:{
+    fontWeight:'700',
+    color:'#FFFFFF',
+    fontSize:24,
+    lineHeight:31.2,
+    textAlign:'center',
+    marginTop:35,
+    
+},
 pleaseText:{
 marginTop:16,
 fontWeight:'400',
