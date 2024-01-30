@@ -6,6 +6,7 @@ import Enquiry from "../UserEnquiry Screen/Enquiry";
 import IssueEnquiry from "../Issue Enquiry/IssueEnquiry";
 import NearbyCustomer from "../NearbyCustomer/NearByCustomer";
 import {  useSelector } from "react-redux";
+import Footer from "../ProductCatalog/Footer/Footer";
 const MainEnquiry:React.FC<{}>=(props:any)=>{
     const [CurrentScreen,setCurrentScreen]=useState(1);
     const Data=[{text:"User Enquiry"},{text:"Issue Enquiry"},{text:"Nearby Customers"}];
@@ -36,7 +37,8 @@ const MainEnquiry:React.FC<{}>=(props:any)=>{
             </TouchableOpacity>);
        }
     return(
-        <SafeAreaView >
+        <SafeAreaView style={{backgroundColor:'#F9F9FC'}}>
+           <>
         <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
         <View style={{height:60,width:'100%',backgroundColor:'#233972',flexDirection:'row'}}>
          <TouchableOpacity style={{marginLeft:21,marginTop:18}} onPress={()=>{props.navigation.navigate('MainScreen')}}>
@@ -52,7 +54,8 @@ const MainEnquiry:React.FC<{}>=(props:any)=>{
         {CurrentScreen==1 && <Enquiry props={props}/>}
         { CurrentScreen==2 && <IssueEnquiry props={props}/>}
         { CurrentScreen==3 && <NearbyCustomer props={props}/>}
-
+        </>
+        <Footer color={'#F9F9FC'} navigationprops={props}/>
 </SafeAreaView>
     );
 };

@@ -1,44 +1,49 @@
 import React, { useRef, useState } from "react";
-import { FlatList, Image, ScrollView, TouchableOpacity, View, useWindowDimensions } from "react-native";
+import { FlatList, Image, SafeAreaView, ScrollView, TouchableOpacity, View, useWindowDimensions } from "react-native";
 import HeaderMain from "../HeaderForMainScreen/HeaderMain";
 import ProductCard from "./ProductCard";
 import styles from "./style/style";
 import InputText from "../InputText/InputText";
-import Footer from "../MainFooter/Footer";
-import BottomDrawer from "../MainScreen/BottomDrawer/BottomDrawer";
+import QR from "./QR";
+import BottomBar from "../Visit/PlannedVisit/BottomBarPlanned";
+import Footer from "./Footer/Footer";
 
 
 const ProductCatalog:React.FC<{}>=(props:any)=>{
-    
-                  
+    const [qrStatus,setQrStatus]=useState<boolean>(false);
+              
+    function setQr(param:boolean){
+        setQrStatus(param);
+    }
+
     const details={
         searchDetails:useRef('')
     }
 
+    console.log("SearchDetails::",details.searchDetails.current);
+
    
-    const BottomDrawerRef= useRef<any>();
-    function PlusClicked() {
-        console.log("Bottom PLus Clicked Succesful:::")
-        console.log("abiut ref",BottomDrawerRef.current)
-        BottomDrawerRef.current.handleClicked();
+    const ProductRef= useRef<any>();
+    function SearchClicked() {
+        ProductRef.current.handleClicked();
        
     }
-    
 
-    const numColumns = 3;
     return(
-       <>
+       <SafeAreaView style={{backgroundColor:'#F9F9FC',height:'100%'}}>
        <View >
         <HeaderMain navigationProps={props} topheading="Product Catalogue"/>
-        
+        { !qrStatus?
+        <>
         <View style={ styles.inputbox } >
                 <View style={{ backgroundColor: '#E6E6E6', width: 0 }}>
-                   <TouchableOpacity>
+                   <TouchableOpacity onPress={SearchClicked}>
                     <Image source={require('../images/search.png')} style={styles.img} />
                     </TouchableOpacity>
                     </View>
-                    
-                <InputText
+
+                   
+                 <InputText
                     placeholder="Search"
                     ChangeText={(text: any) => {
                         details.searchDetails.current=text;
@@ -46,18 +51,22 @@ const ProductCatalog:React.FC<{}>=(props:any)=>{
                     }}
                     keyboardType="numeric"
                     secureText={false}
-                    maxLength={15}
+                    maxLength={20}
                 />
             </View>
             
-         <ProductCard/>
+         <ProductCard setQr={setQr} searchData={"Pipes"} ref={ProductRef}/>
+         </>:
+         <QR/>
+         }
+     
+         <Footer color={'#F9F9FC'} navigationprops={props}/>
+       
          
             
        </View>
-       <Footer  color="#E6E6E6" navigationprops={props} PlusClicked={PlusClicked}/>
-      <BottomDrawer Navigationprops={props} ref={BottomDrawerRef}/>
-      
-       </>
+     
+       </SafeAreaView>
       
     );
 }

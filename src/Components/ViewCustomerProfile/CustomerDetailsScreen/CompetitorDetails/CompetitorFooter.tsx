@@ -21,4 +21,4 @@ const CompetitorFooter:React.FC<CompetitorFooterProps> = () => {
   )
 }
 
-export default CompetitorFooter
+export default CompetitorFooter;

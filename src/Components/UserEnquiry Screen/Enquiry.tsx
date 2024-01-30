@@ -87,7 +87,7 @@ const Enquiry:React.FC<EnquiryProps>=({props}:EnquiryProps)=>{
 
    
     return(
-        <SafeAreaView >
+        <SafeAreaView style={{backgroundColor:'#F9F9FC',height:'100%'}} >
            <View style={styles.TextInput}>
                { FocusStatus ?         
                 <Text style={{color:'#110F2480',position:'absolute',top:9,left:27,fontWeight:'400',fontSize:12,height:15,lineHeight:12

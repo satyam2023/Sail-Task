@@ -10,7 +10,7 @@ const Message:React.FC<{}>=(props:any)=>{
     setmsgOpenStatus(param)
     }
     return(
-        <ScrollView style={{backgroundColor:'#FCFCFC',}}>
+        <ScrollView style={{backgroundColor:'#F9F9FC',}}>
             {!msgOpenStatus ? <> 
             <HeaderMain topheading="Inbox(03)" navigationProps={props}/>
               <CommonBoxClickable  setOpenStatus={setOpenStatus}/>

@@ -5,14 +5,15 @@ import { useDispatch } from 'react-redux';
 import { setCompetitorButtonStatus } from '../../../Redux/Slice2';
 
 interface ThirdProps{
-  
+  CompetitorScreen:Function
 }
-const Third:React.FC<ThirdProps> = ({}:ThirdProps) => {
+const Third:React.FC<ThirdProps> = ({CompetitorScreen}:ThirdProps) => {
   // const [addCompetitorStatus,setAddCompetitorStatus]=useState<boolean>(false);
   // console.log("Competitor Status::",addCompetitorStatus);
   const dispatch=useDispatch();
   function handleAddCompetitor(){
-    dispatch(setCompetitorButtonStatus(true))
+    dispatch(setCompetitorButtonStatus(true));
+    CompetitorScreen(true);
   //  setAddCompetitorStatus(true);
   }
   return (

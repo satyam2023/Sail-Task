@@ -45,15 +45,6 @@
         lowertext:"John Doe", 
         imagepath:require('../../images/profile2user.png')
       },
-      {
-        uppertext:"Planned by", 
-        lowertext:"John Doe", 
-        imagepath:require('../../images/profile2user.png')
-      },
-      {
-        uppertext:"Planned by", 
-        lowertext:"John Doe", 
-        imagepath:require('../../images/profile2user.png')
-      }
+    
 ];
 export default Data;

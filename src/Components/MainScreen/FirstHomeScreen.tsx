@@ -20,13 +20,13 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
     const [visit, setvisit] = useState<number>(16);
     const BottomDrawerRef= useRef<any>();
     const dispatch = useDispatch();
-    function PlusClicked() {
-        console.log("Bottom PLus Clicked Succesful:::")
-        console.log("abiut ref",BottomDrawerRef.current)
-        BottomDrawerRef.current.handleClicked();
+    // function PlusClicked() {
+    //     console.log("Bottom PLus Clicked Succesful:::")
+    //     console.log("abiut ref",BottomDrawerRef.current)
+    //     BottomDrawerRef.current.handleClicked();
        
-    }
-    return (<SafeAreaView style={{backgroundColor:'#E6E6E6'}} >
+    // }
+    return (<SafeAreaView style={{backgroundColor:'#F9F9FC'}} >
         <StatusBar backgroundColor={'#233972'} barStyle={'light-content'}/>
   <View style={styles.name}>
   <View style={{flexDirection:'row',}}>
@@ -39,11 +39,13 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 <TouchableOpacity onPress={()=>props.navigation.navigate('Notification')}>
 <Image source={require('../images/notification.png')} style={{marginTop:21,marginLeft:16}}/>
 </TouchableOpacity>
+<TouchableOpacity onPress={()=>props.navigation.navigate('Setting')}>
 <View style={styles.circle}>
     <Text style={{alignSelf:'center',color:'#FFFFFF',height:15,width:19,fontWeight:"500",fontSize:14,lineHeight:14,marginVertical:11,marginHorizontal:18,}}>
   SV
     </Text>
 </View>
+</TouchableOpacity>
 </View>
 <View style={{flexDirection:'row'}}>
 
@@ -84,8 +86,11 @@ const FirstHomeScreen:React.FC<ScreenProps>=({props}:ScreenProps)=>{
 
   </View>
   
-   <Footer  color="#E6E6E6" navigationprops={props} PlusClicked={PlusClicked}/>
-   <BottomDrawer Navigationprops={props} ref={BottomDrawerRef}/>
+   <Footer  color="#F9F9FC" navigationprops={props} 
+//    PlusClicked={PlusClicked}
+   
+   />
+   {/* <BottomDrawer Navigationprops={props} ref={BottomDrawerRef}/> */}
 
     </SafeAreaView>);
 }

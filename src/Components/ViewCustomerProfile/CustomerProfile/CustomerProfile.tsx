@@ -4,6 +4,7 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "../Style";
 import InputText from "../../InputTextForMainScreen/InputText";
 import UserCard from "./UserCard";
+import Footer from "../../ProductCatalog/Footer/Footer";
 interface CustomerProfileProps{
     navigationProps:any
 }
@@ -13,6 +14,7 @@ const CustomerProfile:React.FC<CustomerProfileProps>=({navigationProps}:Customer
     const CustomerDetails=useRef('');
     return(
         <View >
+            <>
             <MainHeader navigationProps={navigationProps} heading={"Customer Profiles"}/>
             <View style={{height:28,backgroundColor:'#233972',zIndex:-5}}/>
             <View style={styles.floatingTextInput}>
@@ -37,7 +39,8 @@ const CustomerProfile:React.FC<CustomerProfileProps>=({navigationProps}:Customer
                 <UserCard name="Esha Sharma" location="Customer Code: 123678"/>
                 <UserCard name="Sanjay Jain" location="Customer Code: 123678"/>
 
-
+                </>
+               
 
         </View>
     );

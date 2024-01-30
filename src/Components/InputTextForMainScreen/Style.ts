@@ -16,6 +16,7 @@ TextInputs: {
    fontWeight:'400',
    lineHeight:17.5,
    color:'#110F24',
+// color:'#DFDEE1',
    textAlign: 'left',
    paddingVertical:19,
    marginLeft:24,

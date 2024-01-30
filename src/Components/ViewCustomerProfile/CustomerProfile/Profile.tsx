@@ -4,6 +4,7 @@ import styles from "../Style";
 import HeaderMain from "../../HeaderForMainScreen/HeaderMain";
 import InputText from "../../InputTextForMainScreen/InputText";
 import CustomerProfile from "./CustomerProfile";
+import Footer from "../../ProductCatalog/Footer/Footer";
 //import InputText from "../../InputText/InputText";
 interface ProfileProps{
     navigationProps:any
@@ -19,7 +20,8 @@ const Profile:React.FC<ProfileProps>=({navigationProps}:ProfileProps)=>{
         }
     }
     return(
-       <View>{  
+       <View>
+        <>{  
         !CurrentScreen?
         <View>
           <HeaderMain navigationProps={navigationProps} topheading={"Customer Information"}/>
@@ -51,6 +53,8 @@ const Profile:React.FC<ProfileProps>=({navigationProps}:ProfileProps)=>{
         </View>
         :<CustomerProfile navigationProps={navigationProps}/>
        } 
+       </>
+       <Footer color={'#F9F9FC'} navigationprops={navigationProps} />
        </View>
     );
 };

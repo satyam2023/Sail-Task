@@ -13,8 +13,9 @@ const NearbyCustomer:React.FC<NearbyCustomerProps>=({props}:NearbyCustomerProps)
    
     
 
-                function renderitem(item:any){
-                    console.log("item::::",item)
+                function renderitem(item:any,index:number){
+                    console.log("item::::",index)
+               
                     return(
                         <View style={{height:70,width:353,borderRadius:10,backgroundColor:'#FFFFFF',marginTop:12,marginLeft:20,flexDirection:'row'}}>
                             <Image source={item.image} style={{marginVertical:22.3,marginLeft:22.3}}/>
@@ -27,7 +28,7 @@ const NearbyCustomer:React.FC<NearbyCustomerProps>=({props}:NearbyCustomerProps)
                 }
 
     return(
-        <ScrollView style={{marginTop:10}}>
+        <ScrollView style={{marginTop:10,backgroundColor:'#F9F9FC',height:'100%'}}>
            
             {/* <FlatList data={Data} renderItem={renderitem} style={{marginTop:12}}/> */}
             {

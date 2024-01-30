@@ -6,7 +6,7 @@ import FirstHomeScreen from "./FirstHomeScreen";
 
 
 const MainScreen:React.FC<{}>=(props:any)=>{
-    return (<SafeAreaView  style={{backgroundColor:'#E6E6E6',height:'100%'}}>
+    return (<SafeAreaView  style={{backgroundColor:'#F9F9FC',height:'100%'}}>
        
        <FirstHomeScreen props={props}/>
       

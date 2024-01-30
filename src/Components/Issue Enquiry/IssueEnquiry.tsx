@@ -91,7 +91,7 @@ const IssueEnquiry: React.FC<IssueEnquiryProps> = ({props}: IssueEnquiryProps) =
 
 
     return (
-        <SafeAreaView >
+        <SafeAreaView style={{backgroundColor:'#F9F9FC',height:'100%'}}>
             
                 <View style={{flexDirection:'row',marginTop:36,marginLeft:20,}}>
                     <TouchableOpacity style={{height:14}}>

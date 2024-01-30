@@ -7,6 +7,7 @@ import FAQs from "./Pages/FAQs";
 import Privacy from "./Pages/Privacy";
 import Terms from "./Pages/Terms";
 import Contact from "./Pages/Contact";
+import Footer from "../ProductCatalog/Footer/Footer";
 
 const CMSPages:React.FC<{}>=(props:any)=>{
   const Data=[{tag:"About Us"},{tag:"Contact Us"},{tag:"Privacy"},{tag:"FAQs"},{tag:"Terms and Conditions"},];
@@ -45,9 +46,10 @@ const CMSPages:React.FC<{}>=(props:any)=>{
         );
     }
     return(
-        <View>
+        <View style={{backgroundColor:'#F9F9FC',height:'100%'}}>
+            <>
            {pages=="CMS" && <><HeaderMain topheading="CMS Pages" navigationProps={props}/>
-            <FlatList data={Data} renderItem={renderItem} showsVerticalScrollIndicator={false} style={{marginTop:20,marginLeft:21}}/></>
+            <FlatList data={Data} renderItem={renderItem} showsVerticalScrollIndicator={false} style={{marginTop:20,marginLeft:21,}}/></>
             }
             {  pages=="About Us" && <About setScreen={setScreen}/>
             }
@@ -63,6 +65,8 @@ const CMSPages:React.FC<{}>=(props:any)=>{
             {
                                pages=="Contact Us" && <Contact setScreen={setScreen}/>
             }
+            </>
+            {pages=="CMS" && <Footer color={'#F9F9FC'} navigationprops={props}/>}
         </View>
     );
 };

@@ -29,7 +29,7 @@ const About:React.FC<Props>=({setScreen}:Props)=>{
         }
         return(
             <>
-            <View style={{height:62,width:363,borderRadius:4,backgroundColor:'#FFFFFF',marginTop:16,flexDirection:'row'}}>
+            <View style={{height:62,width:363,backgroundColor:'#FFFFFF',marginTop:16,flexDirection:'row'}}>
              <Text style={{width:273,height:25,marginLeft:24,fontWeight:'500',fontSize:14,lineHeight:24,color:'#110F24',marginTop:19}}>{item.item.tag}</Text>
              <TouchableOpacity onPress={()=>{setOpenStatus(!openStatus);Pagescontrol()}}>
                 <Image source={require('../../images/add.png')} style={{transform:[{rotate:'0deg'}],marginTop:19,marginLeft:12}}/>
@@ -37,17 +37,17 @@ const About:React.FC<Props>=({setScreen}:Props)=>{
                 
             </View>
             { (pages=="Operations" && openStatus && item.item.tag=="Operations") &&
-                <Text style={{backgroundColor:'#FFFFFF',color:'black',lineHeight:20,marginRight:27,paddingLeft:20}}>
+                <Text style={{backgroundColor:'#FFFFFF',color:'black',lineHeight:20,marginRight:27,paddingLeft:20,width:363,paddingBottom:10}}>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum totam aliquam ipsa nobis. Aliquam ducimus recusandae facilis vel possimus, veritatis, excepturi, culpa iusto ipsam doloremque repudiandae dolore. Exercitationem, molestiae laudantium.
                 </Text>
             }
              { (pages=="Product Mix & Marketing" && openStatus && item.item.tag=="Product Mix & Marketing") &&
-                <Text style={{backgroundColor:'#FFFFFF',color:'black',lineHeight:20,marginRight:27,paddingLeft:20}}>
+                <Text style={{backgroundColor:'#FFFFFF',color:'black',lineHeight:20,marginRight:27,width:363,paddingLeft:20,paddingBottom:10}}>
                     Product Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum totam aliquam ipsa nobis. Aliquam ducimus recusandae facilis vel possimus, veritatis, excepturi, culpa iusto ipsam doloremque repudiandae dolore. Exercitationem, molestiae laudantium.
                 </Text>
             }
              { (pages=="Management Team" && openStatus && item.item.tag=="Management Team") &&
-                <Text style={{backgroundColor:'#FFFFFF',color:'black',lineHeight:20,marginRight:27,paddingLeft:20}}>
+                <Text style={{backgroundColor:'#FFFFFF',color:'black',lineHeight:20,marginRight:27,width:363,paddingLeft:20,paddingBottom:10}}>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum totam aliquam ipsa nobis. Aliquam ducimus recusandae facilis vel possimus, veritatis, excepturi, culpa iusto ipsam doloremque repudiandae dolore. Exercitationem, molestiae laudantium.
                 </Text>
             }

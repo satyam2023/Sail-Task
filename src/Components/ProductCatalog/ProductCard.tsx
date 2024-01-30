@@ -1,13 +1,29 @@
-import React, { useRef } from "react";
+import React, { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { TouchableOpacityBase } from "react-native-windows";
 import styles from "./style/style"; 
 import InputText from "../InputText/InputText";
-// interface CardProps{
-//     heading:string
-// }
-const ProductCard:React.FC<{}>=()=>{
-   
+interface CardProps{
+   setQr:Function
+   searchData:string
+}
+const ProductCard:React.FC<CardProps>=forwardRef(({setQr,searchData}:CardProps,ref:any)=>{
+   const [searchResult,setSearchResult]=useState<boolean>(false);
+
+function handleSearch(){
+ Data.filter((Data)=>{
+  console.log("SearchDetails::",searchData)
+  if(Data.heading==searchData){
+    console.log("Becoming True")
+    setSearchResult(true);
+  }
+
+ })
+}
+
+   useImperativeHandle(ref, () => ({
+    handleClicked: handleSearch,
+}));
     const Data=[{heading:'Pig Iron',
                   image:require('../images/StainlessSteel.png')},
                 {heading:'Cold Rolled Product',
@@ -45,7 +61,9 @@ function renderitem(item:any)  {
           <Image source={require('../images/StainlessSteel.png')} style={{alignSelf:'center',marginTop:4}}/>
           <Text style={styles.txt}>{item.item.heading}</Text>
           <Text style={styles.dwd}>Download Catalogue</Text>
+          <TouchableOpacity onPress={()=>{setQr(true)}}>
           <Text style={[styles.dwd,{marginTop:0}]}>Show QR Code</Text>
+          </TouchableOpacity>
           </View>
 
       
@@ -53,7 +71,20 @@ function renderitem(item:any)  {
   }
 
     return(
-        <FlatList data={Data} renderItem={renderitem} style={{marginBottom:160}} numColumns={2}/>
+        <>
+       
+       { !searchResult?<FlatList data={Data} renderItem={renderitem} style={{marginBottom:220}} numColumns={2}/>
+          :
+          <View style={styles.card}>
+          <Image source={require('../images/StainlessSteel.png')} style={{alignSelf:'center',marginTop:4}}/>
+          <Text style={styles.txt}>{searchData}</Text>
+          <Text style={styles.dwd}>Download Catalogue</Text>
+          <TouchableOpacity onPress={()=>{setQr(true)}}>
+          <Text style={[styles.dwd,{marginTop:0}]}>Show QR Code</Text>
+          </TouchableOpacity>
+          </View>
+          }
+        </>
     );
-};
+});
 export default ProductCard;

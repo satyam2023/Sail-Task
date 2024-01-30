@@ -10,7 +10,7 @@ const ViewProfile:React.FC<{}>=(props:any)=>{
 
     return(
         <View style={{backgroundColor:'#F9F9FC',height:'100%'}}>
-            
+           
             { !ClickStatus?<Profile navigationProps={props} />:
           <MainScreenCustomer props={props}/> 
          }
