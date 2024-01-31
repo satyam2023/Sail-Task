@@ -5,8 +5,13 @@ import CustomerDetails from "../UpComingVisit/CustomerDetails";
 import { SafeAreaView } from "react-native";
 import styles from "./Style";
 import BottomBar from "./BottomBarPlanned";
+import FilterData from "./FilterData";
+interface PlannedProps{
+    
+}
 
-const Planned:React.FC<{}>=()=>{
+const Planned:React.FC<PlannedProps>=({}:PlannedProps)=>{
+    
     const[plannedView,setplannedView]=useState(false);
     function setStatus(param:boolean){
         console.log("param in palnned::",param);
@@ -23,10 +28,12 @@ const Planned:React.FC<{}>=()=>{
     <SafeAreaView style={{flex:1}}>
   {plannedView==false && <FlatList data={Data} renderItem={renderItem}/>}
   {plannedView==true && <>
+  
   <CustomerDetails status={setStatus}/>
- <BottomBar status={setStatus}/>
+  <BottomBar status={setStatus}/>
   </>
   }
+ 
   </SafeAreaView>
    
    );

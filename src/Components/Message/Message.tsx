@@ -15,7 +15,7 @@ const Message:React.FC<{}>=(props:any)=>{
             <HeaderMain topheading="Inbox(03)" navigationProps={props}/>
               <CommonBoxClickable  setOpenStatus={setOpenStatus}/>
              <CommonBoxClickable  setOpenStatus={setOpenStatus}/>
-           <CommonBoxClickable setOpenStatus={setOpenStatus}/>
+            <CommonBoxClickable setOpenStatus={setOpenStatus}/>
            </> :<MsgDetails navigationprops={props}/>}
                 
             

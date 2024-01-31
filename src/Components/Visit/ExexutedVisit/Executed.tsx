@@ -1,11 +1,15 @@
 import React, { useState } from "react"
-import { SafeAreaView, FlatList } from "react-native";
+import { SafeAreaView, FlatList, View } from "react-native";
 import BottomBar from "../PlannedVisit/BottomBarPlanned";
 import CustomerDetails from "../UpComingVisit/CustomerDetails";
 import UpcomingVisit from "../UpComingVisit/Upcoming";
+import ExecutedCustomer from "./ExecutedCustomer";
+import CommonButton from "../../Button/CommonButton";
+interface ExecutedProps{
+    navigationprops:any
+}
 
-
-const Executed: React.FC<{}> = () => {
+const Executed: React.FC<ExecutedProps> = (navigationprops:ExecutedProps) => {
     const [plannedView, setplannedView] = useState(false);
     function setStatus(param: boolean) {
         console.log("param in palnned::", param);
@@ -25,7 +29,8 @@ const Executed: React.FC<{}> = () => {
         <SafeAreaView style={{ flex: 1 }}>
             {plannedView == false && <FlatList data={Data} renderItem={renderItem} />}
             {plannedView == true && <> 
-            <CustomerDetails status={setStatus} />
+          <ExecutedCustomer status={setStatus} navigationProps={navigationprops}/>
+         
             
             </>
             }

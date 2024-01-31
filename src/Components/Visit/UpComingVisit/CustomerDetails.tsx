@@ -16,9 +16,9 @@ const CustomerDetails:React.FC<CustomerProps>=(props:any)=>{
    }
 
     return(
-        <View style={{backgroundColor:'#FFFFFF',width:353,marginLeft:20,marginTop:16,borderRadius:10,flex:1}}>
+        <View style={{backgroundColor:'#FFFFFF',width:353,marginLeft:20,marginTop:16,borderRadius:10,flex:1,}}>
  <View style={{width:353,height:70,backgroundColor:'#FFFFFF',borderRadius:10,flexDirection:'row',marginTop:16,marginLeft:0}}>
-                <Image source={require('../../images/profile2user.png')} style={styles.img}/>
+                <Image source={require('../../images/profile2userClicked.png')} style={styles.img}/>
                 <View style={{width:248,marginLeft:16.5}}>
                 <Text style={styles.customertext}>Customer Visit 1</Text>
                 <Text style={styles.companytext}>XYZ Steelworks Private Limited</Text>
@@ -34,7 +34,8 @@ const CustomerDetails:React.FC<CustomerProps>=(props:any)=>{
             data={Data}
             renderItem={renderItem}
             scrollEnabled={true} 
-            
+            showsVerticalScrollIndicator={false}
+            style={{}}
             />
             
             </View>

@@ -11,7 +11,7 @@ const MsgField:React.FC<FieldProps>=({heading,body}:FieldProps)=>{
             <Text style={{fontWeight:'400',fontSize:14,lineHeight:14}}>
             {heading}
             </Text>
-            <Text style={{fontWeight:'500',fontSize:14,lineHeight:14,color:'#110F24',marginTop:8}}>  
+            <Text style={{fontWeight:'500',fontSize:12,lineHeight:16,color:'#110F24',marginTop:8}}>  
                 {body}
             </Text>
         </View>

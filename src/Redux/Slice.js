@@ -70,14 +70,16 @@ const userSlice = createSlice({
        })
 
     },
+    setIsLog(state,action){
+      state.isLog=action.payload;
+    }
     
   },
 });
 
-export const {setUserName,setPassword,setSignUp,setLogIn,setEmail,setGender,setPhone } = userSlice.actions;
+export const {setUserName,setPassword,setSignUp,setLogIn,setEmail,setGender,setPhone,setIsLog } = userSlice.actions;
 export const selectUserName = (state) => state.user.userName;
 
 export const isLog = (state) =>  state.user.isLog;
-//export const insaan = (state) => state.user.insaan;
 
 export default userSlice.reducer;

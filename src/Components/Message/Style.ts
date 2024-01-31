@@ -45,9 +45,10 @@ boxText:{
     submitBox:{width:331,
         height:58,
         backgroundColor:'#233972',
-        marginTop:16,
+        marginVertical:16,
         borderRadius:33,
-        marginHorizontal:16},
+        marginHorizontal:16
+    },
 
     submitTxt:{
     textAlign:'center',

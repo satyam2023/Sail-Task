@@ -24,7 +24,7 @@ const CommonBox = () => {
             </View> 
 
             {visible && 
-           <View style={{marginLeft:20,backgroundColor:'#FFFFFF',width:353}}>
+           <View style={{marginLeft:20,backgroundColor:'#FFFFFF',width:353,paddingBottom:20}}>
              <View style={{flexDirection:'row'}}>
                 <View style={{marginLeft:16}}>
                    <Text style={{fontWeight:"500",}}>
@@ -83,4 +83,4 @@ const CommonBox = () => {
   )
 }
 
-export default CommonBox
+export default CommonBox;

@@ -14,10 +14,8 @@ const NearbyCustomer:React.FC<NearbyCustomerProps>=({props}:NearbyCustomerProps)
     
 
                 function renderitem(item:any,index:number){
-                    console.log("item::::",index)
-               
                     return(
-                        <View style={{height:70,width:353,borderRadius:10,backgroundColor:'#FFFFFF',marginTop:12,marginLeft:20,flexDirection:'row'}}>
+                        <View key={index} style={{height:70,width:353,borderRadius:10,backgroundColor:'#FFFFFF',marginTop:12,marginLeft:20,flexDirection:'row'}}>
                             <Image source={item.image} style={{marginVertical:22.3,marginLeft:22.3}}/>
                             <View style={{marginLeft:24.67,marginTop:16}}>
                             <Text style={{width:80,fontWeight:'400',fontSize:14,lineHeight:14,color:'#110F24'}}>{item.name}</Text>

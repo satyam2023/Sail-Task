@@ -2,24 +2,28 @@ import React from "react";
 import { Text, View } from "react-native";
 const ForwardCard: React.FC<{}> = () => {
     return (
-        <View style={{ backgroundColor: '#FCFCFC', marginTop: 16, borderWidth: 1, borderColor: '#E6E6E6', marginHorizontal: 16 }}>
+        <View style={{ backgroundColor: '#F9F9FC', marginTop: 16, borderWidth: 1, borderColor: '#DFDEE1', marginLeft: 16,width:321,height: 136}}>
 
-            <View style={{ marginLeft: 16, marginBottom: 8 }}>
-                <Text style={{ marginTop: 8, fontWeight: '400', fontSize: 14 }}>
-                    Forward by  {`   `}
-                    <Text style={{ fontWeight: '500', color: '#110F24' }}>John Doe</Text>
-
+            <View style={{ marginLeft: 16, marginBottom: 16 }}>
+                
+                <View style={{flexDirection:'row'}}>
+                   <Text style={{ marginTop: 17, fontWeight: '400', fontSize: 14 ,height:14,width:78,lineHeight:14,color:'#110F2480'}}>
+                    Forward by  
                 </Text>
-                <Text style={{ marginTop: 8, fontWeight: '400', fontSize: 14 }}>
-                    Forwarded To  {`   `}
-                    <Text style={{ fontWeight: '500', color: '#110F24' }}>Kiara Sharma</Text>
-
+                <Text style={{marginLeft:11,marginTop:16, fontWeight: '500',fontSize:12,lineHeight:16,height:16,width:132, color: '#110F24' }}>John Doe</Text>
+                </View>
+                <View style={{flexDirection:'row'}}>
+                   <Text style={{ marginTop: 13,width:75,height:14, fontWeight: '400', fontSize: 14 ,lineHeight:14,color:'#110F2480'}}>
+                    Forward To 
                 </Text>
-                <Text style={{ marginTop: 8, fontWeight: '400', fontSize: 14 }}>
+                <Text style={{marginLeft:15,marginTop:12, fontWeight: '500',fontSize:12,lineHeight:16,height:16,width:132, color: '#110F24' }}>Kiara Sharma</Text>
+                </View>
+                <Text style={{ marginTop: 14, fontWeight: '400', fontSize: 14 ,lineHeight:14,width:79,color:'#110F2480'}}>
 
-                    Comments{`\n`}
-                    <Text style={{ fontWeight: '500', color: '#110F24' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facere minus facilis soluta debitis saepe.</Text>
+                    Comments
+                   
                 </Text>
+                <Text style={{ marginTop:4,fontWeight: '500', color: '#110F24',width:263,fontSize:12,lineHeight:16 }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea debitis saepe.</Text>
 
             </View>
         </View>

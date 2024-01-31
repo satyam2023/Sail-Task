@@ -10,6 +10,7 @@ const ButtonSlice = createSlice({
     EnquiryScreen:1,
     CustomerProfileButton:false,
     CompetitorButtonStatus:false,
+    FilterModalStatus:false
   },
   reducers: {
    setfirstscreen:(state,action)=>{
@@ -36,11 +37,15 @@ const ButtonSlice = createSlice({
    },
    setCompetitorButtonStatus:(state,action)=>{
     state.CompetitorButtonStatus=action.payload
+   },
+   setFilterModalStatus:(state,action)=>{
+    state.FilterModalStatus=action.payload;
    }
   },
 });
 
-export const {setCompetitorButtonStatus,setfirstscreen,setSecondscreen,setThirdscreen,setVisitType,setEnquiryScreen,setCustomerProfileButton} = ButtonSlice.actions;
+export const {setCompetitorButtonStatus,setFilterModalStatus,
+  setfirstscreen,setSecondscreen,setThirdscreen,setVisitType,setEnquiryScreen,setCustomerProfileButton} = ButtonSlice.actions;
 
 
 //export const isLog = (state) =>  state.user.isLog;

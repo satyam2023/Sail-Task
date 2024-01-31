@@ -17,18 +17,20 @@ const SignIn:React.FC<{}>=(props:any)=>{
     const[remembertick,setremembertick]=useState(true);
     const [visibilityStatus,setVisibilitystatus]=useState<boolean>(false);
     const [signinColor,setSigninColor]=useState<boolean>(false);
+    const [signin,setsign]=useState<boolean>(false);
     const dispatch=useDispatch();
     const details = {
         passOne:useRef(''),
         phoneNumber: useRef(''),
     };
 
-const isLog=useSelector((state:any)=>state.user.isLog);
+ const isLog=useSelector((state:any)=>state.user.isLog);
 
     function handlesignin(){
+       
 
     const secret = 'secret';
-    const data = {
+     const data = {
       number:details.phoneNumber.current,
      password:details.passOne.current,
     };
@@ -44,16 +46,28 @@ const isLog=useSelector((state:any)=>state.user.isLog);
         ))
     
 
+
+        setsign(true); 
+
      if(isLog){
         props.navigation.navigate('MainScreen');
      }
+
+      
     }
 
     useEffect(()=>{
         if(isLog){
             props.navigation.navigate('MainScreen');
+            setsign(false);
           }
-    },[isLog]);
+          else if(!isLog && signin ) {
+              setVisibilitystatus(true);
+              setsign(false);
+          }
+    },[signin,isLog]);
+
+ 
 
     
 

@@ -6,9 +6,12 @@ import styles from "./Styles";
 import UpcomingVisit from "./UpComingVisit/Upcoming";
 import CustomerDetails from "./UpComingVisit/CustomerDetails";
 import Planned from "./PlannedVisit/Planned";
-import { UseSelector, useSelector } from "react-redux";
+import { UseSelector, useSelector,useDispatch } from "react-redux";
 import Executed from "./ExexutedVisit/Executed";
+import { setFilterModalStatus } from "../../Redux/Slice2";
+import FilterData from "./PlannedVisit/FilterData";
 const Visit:React.FC<{}>=(props:any)=>{
+    const dispatch=useDispatch();
     const Data=[{id:1}]
     const renderItem=(item:any)=>{
         console.log("iteration numebr",item.item)
@@ -32,10 +35,10 @@ setCurrentScreen(2);
 setCurrentScreen(3);
         }
     },[])
-    
+   
     const [customerdetailStatus,setcustomerdetailStatus]=useState(false);
     const [CurrentScreen,setCurrentScreen]=useState<number>(1);
-    const [planneddetailStatus,setplanneddetailstatus]=useState<boolean>(false);
+   
     function setStatus(param:any){
       setcustomerdetailStatus(param);
     }
@@ -88,7 +91,7 @@ setCurrentScreen(3);
                 <Image source={require('../images/search.png')} style={{marginLeft:101,marginTop:18}}/>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{dispatch(setFilterModalStatus(true))}}>
                 <Image source={require('../images/filter.png')} style={{marginLeft:12,marginTop:8}}/>
             </TouchableOpacity>
             
@@ -97,13 +100,10 @@ setCurrentScreen(3);
             
           { CurrentScreen==1 && customerdetailStatus==false && <FlatList data={Data} renderItem={renderItem}/> }
           { CurrentScreen==1 && customerdetailStatus==true && <CustomerDetails status={setStatus}/>}   
-          { CurrentScreen==2 && <Planned/> }
-          { CurrentScreen==3 &&  <Executed/> }
+          { CurrentScreen==2 && <Planned /> }
+          { CurrentScreen==3 &&  <Executed navigationprops={props}/> }
         
-
-
-
-        
+          <FilterData />
         </SafeAreaView>
 
     );

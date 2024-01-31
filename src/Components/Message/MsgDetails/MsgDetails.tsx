@@ -12,9 +12,9 @@ interface MsgProps {
 
 const MsgDetails: React.FC<MsgProps> = ({ navigationprops }: MsgProps) => {
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{}}>
             <HeaderMain topheading="Message Details" navigationProps={navigationprops} />
-            <View style={{ backgroundColor: '#FFFFFF', marginHorizontal: 20, marginVertical: 20 }}>
+            <View style={{ backgroundColor: '#FFFFFF',width:353,marginTop:24,marginLeft:20 ,borderRadius:10}}>
 
                 <MsgField heading="Customer Code" body="1234567" />
                 <MsgField heading="Customer Name" body="John Doe" />
