@@ -27,8 +27,8 @@ const DropDown:React.FC<Props>=({data,heading,setReason}:Props)=>{
             setFocus(true);
             
             
-        }} key={index} style={{marginHorizontal:21,marginTop:5,backgroundColor:'#FFFFFF',height:30,borderRadius:10,}}>
-            <Text style={{alignSelf:'center'}}>{item.segment}</Text>
+        }} key={index} style={{marginHorizontal:21,backgroundColor:'#FFFFFF',height:56,borderBottomWidth:1,borderColor:'#E6E6E6'}}>
+            <Text style={{textAlign:'left',color:'black',marginLeft:24,marginTop:14,height:20}}>{item.segment}</Text>
         </TouchableOpacity>
     );
    }
@@ -45,7 +45,10 @@ const DropDown:React.FC<Props>=({data,heading,setReason}:Props)=>{
     <Image source={require('../images/Arrow.png')} style={dropType==1?{tintColor:'#110F2480',transform:[{rotate:'90deg'}],marginTop:16,marginLeft:83}:{tintColor:'#110F2480',transform:[{rotate:'90deg'}],marginTop:16,marginLeft:183}}/>
  </TouchableOpacity>
  {dropclicked ?
-    data.map(renderItem):<></>}
+ <View style={{marginTop:5}}> 
+   { data.map(renderItem)}
+    </View>
+    :<></>}
 </View>
 
     );

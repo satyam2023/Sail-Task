@@ -11,7 +11,7 @@ import Footer from "./Footer/Footer";
 
 const ProductCatalog:React.FC<{}>=(props:any)=>{
     const [qrStatus,setQrStatus]=useState<boolean>(false);
-              
+    const [dataToSend,setDataToSend]=useState("");
     function setQr(param:boolean){
         setQrStatus(param);
     }
@@ -20,11 +20,9 @@ const ProductCatalog:React.FC<{}>=(props:any)=>{
         searchDetails:useRef('')
     }
 
-    console.log("SearchDetails::",details.searchDetails.current);
-
-   
     const ProductRef= useRef<any>();
-    function SearchClicked() {
+    async function SearchClicked() {
+        await setDataToSend(details.searchDetails.current);
         ProductRef.current.handleClicked();
        
     }
@@ -47,15 +45,15 @@ const ProductCatalog:React.FC<{}>=(props:any)=>{
                     placeholder="Search"
                     ChangeText={(text: any) => {
                         details.searchDetails.current=text;
-                       
+                      
                     }}
-                    keyboardType="numeric"
+                    keyboardType="default"
                     secureText={false}
                     maxLength={20}
                 />
             </View>
             
-         <ProductCard setQr={setQr} searchData={"Pipes"} ref={ProductRef}/>
+         <ProductCard setQr={setQr} searchData={dataToSend} ref={ProductRef}/>
          </>:
          <QR/>
          }

@@ -12,7 +12,7 @@ const ProductCard:React.FC<CardProps>=forwardRef(({setQr,searchData}:CardProps,r
 
 function handleSearch(){
  Data.filter((Data)=>{
-  console.log("SearchDetails::",searchData)
+  console.log("Search Details::",searchData)
   if(Data.heading==searchData){
     console.log("Becoming True")
     setSearchResult(true);

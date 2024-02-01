@@ -38,7 +38,8 @@ const SignIn:React.FC<{}>=(props:any)=>{
     console.log("token inside signin:",jwt);
     
        
-         dispatch(  setLogIn(
+         dispatch(  
+            setLogIn(
             {
                 password:details.passOne.current,
                 phonenumber:details.phoneNumber.current,

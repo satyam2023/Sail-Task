@@ -118,8 +118,6 @@ Welcometextname:{
     borderRadius:5,
     borderColor:'#FAFAFA',
     backgroundColor:'#FAFAFA',
-   
-   
 },
 });
 export default styles;

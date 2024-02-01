@@ -40,18 +40,18 @@ const handleCloseBottomSheet = () => {
             <View style={{flexDirection:'row'}}>
             <Text style={{marginTop:17.5,marginLeft:24,color:'#000000',fontWeight:'500',fontSize:16,lineHeight:24}}>More Options</Text>
            <TouchableOpacity onPress={()=>{setIsBottomSheetOpen(false)}}>
-            <Image source={require('../../images/Close.png')} style={{marginTop:17.5,marginLeft:210}}/>
+            <Image source={require('../../images/Close.png')} style={{marginTop:16,marginLeft:214,height:24,width:24}}/>
             </TouchableOpacity>
             </View>
-            <View style={{flexDirection:'row'}}>
-               <Card image={require('../../images/profile2user.png')} heading="Create Visit Plan"  width={68} left={48} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/>
+            <View style={{flexDirection:'row',marginLeft:-30}}>
+               <Card image={require('../../images/Multiuser.png')} heading="Create Visit Plan"  width={68} left={48} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/>
               
-               <Card image={require('../../images/profile2user.png')} heading="Create Customer Profile"  width={126} left={19} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/>
+               <Card image={require('../../images/singleuser.png')} heading="Create Customer Profile"  width={126} left={19} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/>
             
             </View>
-            <View style={{flexDirection:'row',}}> 
-            <Card image={require('../../images/profile2user.png')} heading="Create Meeting Details"  width={113} left={26} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/>
-            <Card image={require('../../images/profile2user.png')} heading="View Customer Profile"  width={111} left={27} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/> 
+            <View style={{flexDirection:'row',marginLeft:-30}}> 
+            <Card image={require('../../images/note.png')} heading="Create Meeting Details"  width={113} left={26} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/>
+            <Card image={require('../../images/singleuser.png')} heading="View Customer Profile"  width={111} left={27} NavigationProps={Navigationprops} handleCloseBottomSheet={handleCloseBottomSheet}/> 
             </View>
             </View>
         </Modal>
